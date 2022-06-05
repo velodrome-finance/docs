@@ -118,7 +118,7 @@ The `$WEVE` bridging service will be available at https://weve.velodrome.finance
 on May 31st and will be available until the 30th of June. Unclaimed `$USDC` and `$VELO` will
 be transferred back into the treasury.
 
-**Burning via Block Explorer**
+### Burning via Block Explorer
 
 NOTE: There is currently a small UI issue with this process. TLDR the frontend is overestimating the amount of WeVE a user has to burn, which causes the contract call to fail.
 

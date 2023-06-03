@@ -51,8 +51,7 @@ Bridging to Optimism is possible here: https://app.optimism.io/bridge
 
 If you're bridging from a network other than the Ethereum network, we recommend the
 following services:
-* https://stargate.finance/transfer &mdash; a multi-network bridge for stable
-   coins
+* https://stargate.finance/transfer &mdash; a multi-network bridge for stablecoins
 * https://www.bungee.exchange &mdash; an aggregator that shows the best
    available bridging options. Use their _Refuel_ service to deposit smaller
    amounts in case you run out of `$ETH` to pay transaction fees.
@@ -132,5 +131,5 @@ Velodrome will launch with initial distribution of 400M VELO airdropped to
 DeFi community members, protocols, and DAOs likeliest to play an active role in the Optimism
 ecosystem.
 
-Details of the initial distribution and token emissinos are available in the
+Details of the initial distribution and token emissions are available in the
 [Initial Distribution section of the Tokenomics](/tokenomics#initial-distribution).

@@ -97,7 +97,7 @@ As of August 2022, we've compiled a list of key differences between Velodrome's 
   - **Treat external bribes differently than internal bribes (i.e. fees).**
     We split Bribe into two separate contracts, `InternalBribe` and
     `ExternalBribe`. `InternalBribe` functions essentially the same way as `Bribe`
-    did, but `ExternalBribe` ensures that rewards are eliglble to be claimed by
+    did, but `ExternalBribe` ensures that rewards are eligible to be claimed by
     any voter who votes for the underlying gauge during the epoch, instead of
     only voters who vote after the rewards are sent. `ExternalBribe` also ensures
     that rewards can only be claimed after the epoch ends.`ExternalBribe`

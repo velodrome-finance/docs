@@ -1,0 +1,65 @@
+import { Chart } from "react-google-charts";
+
+# Rewards
+
+## Fees
+
+Represent liquidity pool trading fees from the previous epoch distributed to
+voters in pool tokens (e.g., if the pool is `vAMM-VELO/USDC` the distributed
+tokens are `$VELO` and `$USDC`). Trading fees generated in the current epoch
+will be distributed as rewards after the next epoch voting round.
+
+These rewards are available for claim after the epoch flips
+(after Wednesday 23:59 UTC), and are proportional to the voting power cast by a
+voter (`$veVELO`).
+
+## Incentives
+
+In addition to the fees, liquidity pools allow external rewards from anyone
+(known as _incentives_). Incentives can be added to _whitelisted_ pools and are distributed
+_only_ to voters on that pool, proportionally to their share of pool votes.
+
+These rewards are available for claim after the epoch flips
+(after Wednesday 23:59 UTC), and are proportional to the voting power cast by a
+voter (`$veVELO`).
+
+## Rewards claim
+
+Rebase rewards claim is available one full epoch after tokens are locked.
+External incentives rewards are claimable after a new epoch has started (epochs increment right after 23:59 UTC each Wednesday).
+
+An example of incentives, voting, and rewards claim timeline:
+
+- A new epoch starts Thursday (00:00 UTC)
+- Incentives are deposited at any point in the epoch
+- Voters vote for their preferred pools
+- Once the next epoch arrives (the following Thursday), users are able to claim rewards
+
+<Chart
+  chartType="Timeline"
+  data={[
+    [
+      { type: "string", id: "Voting Round" },
+      { type: "string", id: "Action" },
+      { type: "date", id: "Start" },
+      { type: "date", id: "End" },
+    ],
+    ["Round #1", "Incentives Deposited, Votes Cast", new Date(2022, 5, 2), new Date(2022, 5, 8, 23, 59)],
+    ["Round #1", "Rewards Claimable", new Date(2022, 5, 9), new Date(2022, 5, 30)],
+
+    ["Round #2", "Incentives Deposited, Votes Cast", new Date(2022, 5, 9), new Date(2022, 5, 15, 23, 59)],
+    ["Round #2", "Rewards Claimable", new Date(2022, 5, 16), new Date(2022, 5, 30)],
+
+    ["Round #3", "Incentives Deposited, Votes Cast", new Date(2022, 5, 16), new Date(2022, 5, 22, 23, 59)],
+    ["Round #3", "Rewards Claimable", new Date(2022, 5, 23), new Date(2022, 5, 30)],
+
+]}
+options={{
+    title: "Incentives, Voting and Rewards Timeline",
+    colors: [
+      '#79F8DB', '#2180DF', '#EA1000', '#871000', '#59BFD8', '#0281FF',
+      '#FBBF42', '#EDE7DB'
+    ],
+  }}
+width={"100%"}
+/>

@@ -1,0 +1,136 @@
+import { Button, Table, Tabs } from "flowbite-react";
+
+import { SvgLoader } from "react-svgmt";
+
+<div id="overview"></div>
+
+# Security Overview
+
+As a commitment towards the safety of our users and partners, we want to
+be transparent about the changes and the status of the security audits of our
+smart contracts.
+
+<div>
+  Before moving forward, we'd like to remind our users that
+  security audits do not eliminate risks completely and that
+  every user should read and agree to our legal disclaimer before they continue
+  using this website.
+
+For security reports, please reach out to us on <a className="text-primary underline hover:no-underline underline-offset-2" href="https://discord.gg/velodrome">Discord</a>, or to the contacts provided on our Github page.
+
+</div>
+
+<div id="bug-bounty"></div>
+<br />
+## Bug Bounty Programs
+
+<SvgLoader src="/partners/immunefi.svg" className="my-8 w-48" />
+
+Velodrome Finance launched a bug bounty program on **29th of June** in
+collaboration with Immunefi.
+
+<Button
+  href="https://immunefi.com/bounty/velodromefinance/"
+  className="my-8 w-1/2"
+  size="sm"
+  color="white"
+>
+  <strong>Velodrome on Immunefi</strong>
+</Button>
+
+The Velodrome team's $100,000 bounty was matched by the Optimism Foundation. The program is offering up to **$200,000** in bounty for smart contract reports.
+
+<div id="emergency"></div>
+<br />
+## Emergency Council
+
+To support the health of the protocol and ecosystem, there is a Council
+consisting of members from the Velodrome team and prominent figures from within
+the Optimism.
+
+The Council can be spawned in case of emergency situations or by passing
+a governance proposal that requires the council's help to be executed.
+
+The Council address is at **`0x838352F4E3992187a33a04826273dB3992Ee2b3f`** and it:
+
+- can set a new `emergencyCouncil`
+- can kill a gauge
+- can revive a gauge
+- can set a custom name or symbol for a pool
+- can activate or deactivate (m)veNFTs (superseded by the governance once enabled)
+
+<div id="contracts"></div>
+<div id="releases"></div>
+<div id="audits"></div>
+<br />
+
+## Releases
+
+The full list of the releases and audits. The codebase is available
+on Github and it includes open source and restricted use licenses.
+
+Most of the Velodrome features are under BUSL, please reach out for questions
+before deploying any of the code linked below.
+
+### v1 Release
+
+Velodrome v1 launched on <strong>2nd of June, 2022</strong>. And was reviewed
+by Code4Rena on <strong>23rd-30th of May</strong>.
+
+- [Audit](https://code4rena.com/audits/2022-05-velodrome-finance-contest)
+- [Codebase](https://github.com/velodrome-finance/v1)
+- [Contracts](https://github.com/velodrome-finance/v1#contracts)
+
+### v2 and Relay v1 Releases
+
+<SvgLoader src="/partners/spearbit.svg" className="my-8 w-48" />
+
+Velodrome Finance was audited by our partners from Spearbit.
+The audit took place between **7th and 20th of February in 2023**, followed by
+a two week period for fixes. On **22nd of May** we requested a second audit from
+the same team in order to finalize any findings after the first round.
+
+The Spearbit audit completed on **16th of June, 2023** and the report was
+published on **17th of July, 2023** after it has been shared with Velodrome v1
+forks.
+
+- [Audit](https://github.com/spearbit/portfolio/raw/master/pdfs/Velodrome-Spearbit-Security-Review.pdf)
+- [Codebase](https://github.com/velodrome-finance/contracts/tree/v2-optimism)
+- [Relay Codebase](https://github.com/velodrome-finance/relay)
+- [Sugar Codebase](https://github.com/velodrome-finance/sugar)
+- [Contracts](https://github.com/velodrome-finance/contracts/tree/v2-optimism#deployment-1)
+- [Relay Contracts](https://github.com/velodrome-finance/relay/blob/main/script/constants/output/Optimism.json)
+- [Sugar Contracts](https://github.com/velodrome-finance/sugar#releases)
+
+### Slipstream Release
+
+<SvgLoader src="/partners/spearbit.svg" className="my-8 w-48" />
+
+Slipstream, the concentrated liquidity audit was completed by Spearbit on 5th
+of December 2023 and the report was published on 22nd of January 2024.
+
+- [Audit](https://github.com/spearbit/portfolio/raw/master/pdfs/Velodrome-Spearbit-Security-Review-Nov23.pdf)
+- [Codebase](https://github.com/velodrome-finance/slipstream)
+- [Universal Router Codebase](https://github.com/velodrome-finance/universal-router)
+- [Contracts](https://github.com/velodrome-finance/slipstream#deployment)
+- [Universal Router Contracts](https://github.com/velodrome-finance/universal-router/tree/main/deploy-addresses)
+
+### Superchain Release
+
+<div className="flex space-x-12 items-center">
+  <SvgLoader src="/partners/chainsecurity.svg" className="my-8 h-10" />
+  <span className="opacity-30 last:hidden">&middot;</span>
+  <SvgLoader src="/partners/sherlock.svg" className="my-8 h-6" />
+</div>
+
+Superchain release took place on <strong>8th of November 2024</strong> after
+the audit was completed by ChainSecurity and Sherlock teams.
+
+- [ChainSecurity Audit](https://www.chainsecurity.com/security-audit/velodrome-superchain-interoperability)
+- [ChainSecurity Extended Audit](https://www.chainsecurity.com/security-audit/superchain-diff)
+- [ChainSecurity Slipstream Audit](https://www.chainsecurity.com/security-audit/velodrome-superchain-slipstream)
+- [Sherlock Audit](https://github.com/sherlock-protocol/sherlock-reports/raw/main/audits/2024.11.13%20-%20Final%20-%20Velodrome.pdf)
+- [Codebase](https://github.com/velodrome-finance/superchain-contracts)
+- [Slipstream Codebase](https://github.com/velodrome-finance/superchain-slipstream)
+- [Contracts](https://github.com/velodrome-finance/superchain-contracts/tree/main/deployment-addresses)
+- [Slipstream Contracts](https://github.com/velodrome-finance/superchain-slipstream/tree/main/deployment-addresses)

@@ -1,4 +1,4 @@
-import { SvgLoader } from "react-svgmt";
+import SVG from "react-inlinesvg";
 
 ## Version 1
 
@@ -11,18 +11,18 @@ providers must stake their deposited liquidity (in a Gauge) to receive VELO
 tokens. VELO holders can lock their tokens to vote on the distribution of
 emissions.
 
-<SvgLoader
-  src="/svg/v1-simplified.svg"
-  className="bg-neutral-200 dark:bg-neutral-200 rounded my-16 w-full"
-  svgAttributes={{
-    viewBox: "0 0 780 220",
-    preserveAspectRatio: "xMidYMid meet",
-  }}
+<SVG
+  src="/svg/VELO/v1-simplified.svg"
+  className="bg-white rounded my-16 w-full"
+  viewBox="0 0 780 220"
+  preserveAspectRatio="xMidYMid meet"
 />
 
 The protocol is 100% immutable, so changes to the protocol mechanics are not
 supported. As a result, the Minter will distribute tokens based on the same
 rules in perpetuity.
+
+<br />
 
 ## Version 2
 
@@ -39,13 +39,11 @@ such as:
 To allow the new functionality, the protocol was redesigned and rewritten from
 the ground up (see the simplified diagram for changes).
 
-<SvgLoader
-  src="/svg/v2-simplified.svg"
-  className="bg-neutral-200 dark:bg-neutral-200 rounded my-16 w-full h-auto py-4"
-  svgAttributes={{
-    viewBox: "0 1000 900 420",
-    preserveAspectRatio: "xMidYMid meet",
-  }}
+<SVG
+  src="/svg/VELO/v2-simplified.svg"
+  className="bg-white rounded my-16 w-full h-auto py-4"
+  viewBox="0 1000 900 420"
+  preserveAspectRatio="xMidYMid meet"
 />
 
 Velodrome V2 is still 100% immutable and brings an important architectural

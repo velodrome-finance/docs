@@ -1,6 +1,6 @@
 import { Button, Table, Tabs } from "flowbite-react";
 
-import { SvgLoader } from "react-svgmt";
+import SVG from "react-inlinesvg";
 
 <div id="overview"></div>
 
@@ -16,32 +16,35 @@ smart contracts.
   every user should read and agree to our legal disclaimer before they continue
   using this website.
 
-For security reports, please reach out to us on <a className="text-primary underline hover:no-underline underline-offset-2" href="https://discord.gg/velodrome">Discord</a>, or to the contacts provided on our Github page.
+For security reports, please reach out to us on <a className="text-brand-500 no-underline hover:underline underline-offset-2" href="https://discord.gg/velodrome">Discord</a>, or to the contacts provided on our Github page.
 
 </div>
 
 <div id="bug-bounty"></div>
-<br />
+
 ## Bug Bounty Programs
 
-<SvgLoader src="/partners/immunefi.svg" className="my-8 w-48" />
-
-Velodrome Finance launched a bug bounty program on **29th of June** in
-collaboration with Immunefi.
-
-<Button
-  href="https://immunefi.com/bounty/velodromefinance/"
-  className="my-8 w-1/2"
-  size="sm"
-  color="white"
->
-  <strong>Velodrome on Immunefi</strong>
-</Button>
+<div className="bg-primary rounded-2xl py-12 space-y-6 mb-8 flex flex-col items-center">
+  <SVG src="/partners/immunefi.svg" className="w-32" />
+  <span className="w-80 text-center">
+    Velodrome Finance launched a bug bounty program on **29th of June** in
+    collaboration with Immunefi.
+  </span>
+  <Button
+    href="https://immunefi.com/bounty/velodromefinance/"
+    className="w-64"
+    size="md"
+    pill
+    color="primary-white"
+  >
+    <strong>Velodrome on Immunefi</strong>
+  </Button>
+</div>
 
 The Velodrome team's $100,000 bounty was matched by the Optimism Foundation. The program is offering up to **$200,000** in bounty for smart contract reports.
 
 <div id="emergency"></div>
-<br />
+
 ## Emergency Council
 
 To support the health of the protocol and ecosystem, there is a Council
@@ -62,7 +65,6 @@ The Council address is at **`0x838352F4E3992187a33a04826273dB3992Ee2b3f`** and i
 <div id="contracts"></div>
 <div id="releases"></div>
 <div id="audits"></div>
-<br />
 
 ## Releases
 
@@ -83,7 +85,7 @@ by Code4Rena on <strong>23rd-30th of May</strong>.
 
 ### v2 and Relay v1 Releases
 
-<SvgLoader src="/partners/spearbit.svg" className="my-8 w-48" />
+<SVG src="/partners/spearbit.svg" className="my-8 w-48" />
 
 Velodrome Finance was audited by our partners from Spearbit.
 The audit took place between **7th and 20th of February in 2023**, followed by
@@ -104,7 +106,7 @@ forks.
 
 ### Slipstream Release
 
-<SvgLoader src="/partners/spearbit.svg" className="my-8 w-48" />
+<SVG src="/partners/spearbit.svg" className="my-8 w-48" />
 
 Slipstream, the concentrated liquidity audit was completed by Spearbit on 5th
 of December 2023 and the report was published on 22nd of January 2024.
@@ -113,14 +115,14 @@ of December 2023 and the report was published on 22nd of January 2024.
 - [Codebase](https://github.com/velodrome-finance/slipstream)
 - [Universal Router Codebase](https://github.com/velodrome-finance/universal-router)
 - [Contracts](https://github.com/velodrome-finance/slipstream#deployment)
-- [Universal Router Contracts](https://github.com/velodrome-finance/universal-router/tree/main/deploy-addresses)
+- [Universal Router Contracts](https://github.com/velodrome-finance/universal-router/tree/main/deployment-addresses)
 
 ### Superchain Release
 
-<div className="flex space-x-12 items-center">
-  <SvgLoader src="/partners/chainsecurity.svg" className="my-8 h-10" />
+<div className="flex space-x-6 items-center mb-12">
+  <SVG src="/partners/chainsecurity.svg" className="h-10" />
   <span className="opacity-30 last:hidden">&middot;</span>
-  <SvgLoader src="/partners/sherlock.svg" className="my-8 h-6" />
+  <SVG src="/partners/sherlock.svg" className="h-6" />
 </div>
 
 Superchain release took place on <strong>8th of November 2024</strong> after

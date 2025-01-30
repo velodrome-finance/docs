@@ -1,0 +1,173 @@
+# SDK
+
+This guide applies to both, Aerodrome and Velodrome (Superchain).
+
+This document covers mainly the write functions, for accessing the data, please
+check Sugar:
+
+* https://github.com/velodrome-finance/sugar
+* https://github.com/velodrome-finance/sugar-sdk
+
+For the contract addresses, please check:
+* https://aerodrome.finance/security#contracts (for Aerodrome)
+* https://velodrome.finance/security#contracts (for Velodrome/Superchain)
+
+## Basic Pools
+
+Please refer to the [Liquidity Pools](liquidity) for general information.
+
+The volatile and stable pools are mostly compatible with the Uniswap V2
+interface.
+
+### Deposits
+
+To deposit into a pool, the allowance for the ERC20 tokens should be granted
+to the Router:
+* https://github.com/aerodrome-finance/contracts/blob/main/contracts/interfaces/IRouter.sol (for Aerodrome)
+* https://github.com/velodrome-finance/contracts/blob/main/contracts/interfaces/IRouter.sol (for Velodrome)
+* https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/IRouter.sol (for Superchain)
+
+If the pool does not exist, the amounts should follow the ratios of
+* 1:1 for stable pools
+* arbitrary for volatile pools
+
+For existing pools, a call to the `quoteAddLiquidity()` will return the
+estimated amounts for a deposit.
+
+The `amountBDesired` value should be set to a large value, consider something
+like:
+```
+parseUnits(Number.MAX_SAFE_INTEGER.toString(), tokenB.decimals)
+```
+Using the
+* quoted amounts,
+* minimum amounts (where a slippage is applied),
+* and unix timestamp in the future for the deadline
+
+To deposit, call `addLiquidity()` or `addLiquidityETH()` if depositing native
+tokens.
+
+The call will return ERC20 tokens representing the LP tokens.
+
+### Fees Claiming
+
+To claim the fees, call the Pool contract function `claimFees()`:
+
+* https://github.com/aerodrome-finance/contracts/blob/main/contracts/interfaces/IPool.sol (for Aerodrome)
+* https://github.com/velodrome-finance/contracts/blob/main/contracts/interfaces/IPool.sol (for Velodrome)
+* https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/pools/IPool.sol (for Superchain)
+
+### Staking / Unstaking
+
+LP tokens from depositing into basic pool can be staked if the pool has a
+gauge.
+
+Note: staking LP tokens will reward the depositors with emissions instead of
+fees!
+
+To stake LP tokens, the allowance for these tokens should be granted to the
+pool Gauge contract:
+* https://github.com/aerodrome-finance/contracts/blob/main/contracts/gauges/interfaces/IGauge.sol (for Aerodrome)
+* https://github.com/velodrome-finance/contracts/blob/main/contracts/gauges/interfaces/IGauge.sol (for Velodrome)
+* https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/gauges/ILeafGauge.sol (for Superchain)
+
+Calling
+* `deposit()` with the LP tokens amount will stake the liquidity
+* `withdraw()` with the LP tokens amount will unstake the liquidity
+
+### Emissions Claiming
+
+To claim emissions for a staked deposit, call the Gauge contract function
+`getReward()` passing the LP depositor address.
+
+## Concentrated Pools
+
+Please refer to the [Liquidity Pools](liquidity) for general information.
+
+The concentrated pools are mostly compatible with the Uniswap V3 interface.
+
+### Deposits
+
+To deposit into a pool, the allowance for the ERC20 tokens should be granted
+to the NonfungiblePositionManager contract:
+* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/interfaces/INonfungiblePositionManager.sol
+* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/interfaces/INonfungiblePositionManager.sol
+* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/periphery/NonfungiblePositionManager.sol
+
+If the pool does not exist, an initial `sqrtPriceX96` (pool price) will have to
+be provided.
+
+To get a quote, call the SugarHelper contract functions `estimateAmount0()` or
+`estimateAmount1()` with the token amount and the initial pool price. If the
+pool exists, the pool current price will be used instead:
+* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/SugarHelper.sol#L49-L109 (for Aerodrome)
+* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/SugarHelper.sol#L49-L109 (for Velodrome)
+* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/sugar/SlipstreamSugar.sol#L49-L109 (for Superchain)
+
+
+To deposit, using the
+* quoted amounts,
+* minimum amounts (where a slippage is applied),
+* pool tick spacing,
+* low/high tick values,
+* and unix timestamp in the future for the deadline
+
+Call the `mint()` function on the NonfungiblePositionManager contract (pass
+`sqrtPriceX96 = 0` if the pool exists, non-zero value will try to create the
+pool).
+
+The NonfungiblePositionManager contract will mint an ERC721 token (NFT) for
+every deposit.
+
+### Fees Claiming
+
+To claim the fees, call the CLPool contract function `collect()`:
+* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L67-L87 (for Aerodrome)
+* https://github.com/velodrome-finance/slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L67-L87 (for Velodrome)
+* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L43-L61 (for Superchain)
+
+### Staking / Unstaking
+
+To stake a concentrated liquidity deposit, the allowance for the ERC721 token
+should be granted to the pool CLGauge contract (if available):
+* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/gauge/interfaces/ICLGauge.sol (for Aerodrome)
+* https://github.com/velodrome-finance/slipstream/blob/main/contracts/gauge/interfaces/ICLGauge.sol (for Velodrome)
+* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/gauge/interfaces/ILeafCLGauge.sol (for Superchain)
+
+To stake the ERC721, call the CLGauge `deposit()` function with the NFT id.
+Call the `withdrawn()` function to unstake.
+
+### Emissions Claiming
+
+To claim emissions for a staked deposit, call the Gauge contract function
+`getReward()` passing the deposit NFT id.
+
+### Burning
+
+The concentrated pool deposit NFT can be burned if:
+* all the liquidity has been withdrawn
+* all the fees were claimed
+* all the emissions (if any were claimed)
+
+To burn the ERC721 token, call the NonfungiblePositionManager `burn()`
+function. This call can also be bundled into a native `multicall()` function
+call along with a `collect()` call.
+
+## Locks (veNFT)
+
+_TBD_
+
+### Locking
+
+### Rebases
+
+### Voting
+
+### Rewards Claiming
+
+## Incentives
+_TBD_
+
+## Swaps
+
+_TBD_

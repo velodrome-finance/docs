@@ -153,6 +153,18 @@ To burn the ERC721 token, call the NonfungiblePositionManager `burn()`
 function. This call can also be bundled into a native `multicall()` function
 call along with a `collect()` call.
 
+## Pricing tokens
+
+To get token prices in ETH, call [getManyRatesToEthWithCustomConnectors](https://github.com/velodrome-finance/spot-price-aggregator/blob/ed3321144324da0b07ddf1fe9b2effcb56c54663/contracts/OffchainOracle.sol#L359). Rates are returned multiplied by ETH decimals + the difference in decimals to ETH. You will need to normalize these using something along these lines (example code in python): 
+
+```python
+# where r is the rate you get back from getManyRatesToEthWithCustomConnectors
+# and nr is normalized rate
+if t.decimals == eth_decimals: nr = rate
+elif t.decimals < eth_decimals: nr = rate // (10 ** (eth_decimals - t.decimals))
+else: nr = rate * (10 ** (t.decimals - eth_decimals))
+```
+
 ## Locks (veNFT)
 
 _TBD_

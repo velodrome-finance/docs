@@ -170,4 +170,14 @@ _TBD_
 
 ## Swaps
 
-_TBD_
+To swap `amount` of `tokenA` to `expectedAmount` of `tokenB`, you need to get a quote first. A quote consists of:
+
+- `path` which describes one or multiple hops between `tokenA` and `tokenB`
+- `amount` of `tokenA`
+- `expectedAmount` of `tokenB` 
+- `priceImpact` of the swap
+
+To get a quote, call `quoteExactInput` function from `MixedRouteQuoterV1`:
+* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Aerodrome)
+* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Velodrome)
+

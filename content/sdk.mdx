@@ -177,7 +177,26 @@ To swap `amount` of `tokenA` to `expectedAmount` of `tokenB`, you need to get a 
 - `expectedAmount` of `tokenB` 
 - `priceImpact` of the swap
 
+Typically you will want to find a quote maximizing `expectedAmount` of `tokenB`. Here's how sugar-sdk clients approach this:
+
+- use sugar's `forSwaps` function to get a list of pools (`NB: unlike **all** function this returns a more compact liquidity pool structure`) 
+- construct a graph of tokens using pools as edges
+- find all paths from `tokenA` to `tokenB` in the graph (consider this graph `undirected`; we suggest max path depth to 3 elements)
+- for each path, invoke `quoteExactInput` function (details below)
+- discard 0 quotes and pick a quote with maximum `expectedAmount` value 
+
+
+
 To get a quote, call `quoteExactInput` function from `MixedRouteQuoterV1`:
 * https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Aerodrome)
 * https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Velodrome)
 
+`quoteExactInput` takes 2 arguments `amountIn` and `path`. Here's how to construct a `path`:
+
+- for every pool (`tokenX` -> `tokenY`) produce a triplet in a form of `address1 - filler - address2`, where `address1` and `address2` are corresponding token addresses and filler is determined as follows:
+  - `2097152` for stable pools
+  - `4194304` for volatile pools
+  - value of `pool.type` for CL pools
+- concatenate these triplets into a list and produce another list mapping its values to types `address` for addresses and `int24` for fillers
+- run encode packed function on the 2 lists to produce encoded packed data (see [example using viem](https://www.viem.sh/docs/abi/encodePacked) and [example using eth abi](https://eth-abi.readthedocs.io/en/stable/encoding.html))
+ 

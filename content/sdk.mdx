@@ -179,7 +179,8 @@ To swap `amount` of `tokenA` to `expectedAmount` of `tokenB`, you need to get a 
 
 Typically you will want to find a quote maximizing `expectedAmount` of `tokenB`. Here's how sugar-sdk clients approach this:
 
-- use sugar's `forSwaps` function to get a list of pools (`NB: unlike **all** function this returns a more compact liquidity pool structure`) 
+- use sugar's `forSwaps` function to get a list of pools (`NB: unlike **all** function this returns a more compact liquidity pool structure`)
+- filter returned pools to either include one of the tokens included in the swap or one of the connector tokens (configured on a per chain basis) 
 - construct a graph of tokens using pools as edges
 - find all paths from `tokenA` to `tokenB` in the graph (consider this graph `undirected` with `parallel edges`[^1] we suggest max path depth to 3 elements)
 - discard paths containing potentially unsafe tokens[^2] if needed

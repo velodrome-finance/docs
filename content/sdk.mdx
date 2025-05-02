@@ -199,6 +199,10 @@ To get a quote, call `quoteExactInput` function from `MixedRouteQuoterV1`:
   - value of `pool.type` for CL pools
 - concatenate these triplets into a list and produce another list mapping its values to types `address` for addresses and `int24` for fillers
 - run encode packed function on the 2 lists to produce encoded packed data (see [example using viem](https://www.viem.sh/docs/abi/encodePacked) and [example using eth abi](https://eth-abi.readthedocs.io/en/stable/encoding.html))
+
+Once you have a quote that looks good, decide on the `slippage` (in %) that sounds acceptable and provide this as input to `execute` function of the swap contract. 
+
+> More information on the swap interface coming soon
  
 [^1]: There can be multiple pools for the same pair of tokens, hence the need to support parallel edges in the graph
 [^2]: Tokens might have a transfer tax or other fee, which means they need special handling on the swap router, higher slippage setting

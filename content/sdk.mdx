@@ -182,4 +182,40 @@ _TBD_
 
 ## Swaps
 
-_TBD_
+To swap `amount` of `tokenA` to `expectedAmount` of `tokenB`, you need to get a quote first. A quote consists of:
+
+- `path` which describes one or multiple hops between `tokenA` and `tokenB`
+- `amount` of `tokenA`
+- `expectedAmount` of `tokenB` 
+- `priceImpact` of the swap
+
+Typically you will want to find a quote maximizing `expectedAmount` of `tokenB`. Here's how sugar-sdk clients approach this:
+
+- use sugar's `forSwaps` function to get a list of pools (`NB: unlike **all** function this returns a more compact liquidity pool structure`)
+- filter returned pools to either include one of the tokens included in the swap or one of the connector tokens (configured on a per chain basis) 
+- construct a graph of tokens using pools as edges
+- find all paths from `tokenA` to `tokenB` in the graph (consider this graph `undirected` with `parallel edges`[^1] we suggest max path depth to 3 elements)
+- discard paths containing potentially unsafe tokens[^2] if needed
+- for each path, invoke `quoteExactInput` function (details below)
+- discard 0 quotes and pick a quote with maximum `expectedAmount` value 
+
+To get a quote, call `quoteExactInput` function from `MixedRouteQuoterV1`:
+* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Aerodrome)
+* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Velodrome)
+
+`quoteExactInput` takes 2 arguments `amountIn` and `path`. Here's how to construct a `path`:
+
+- for every pool (`tokenX` -> `tokenY`)[^3] produce a triplet in a form of `address1 - filler - address2`, where `address1` and `address2` are corresponding token addresses and filler is determined as follows:
+  - `2097152` for stable pools
+  - `4194304` for volatile pools
+  - value of `pool.type` for CL pools
+- concatenate these triplets into a list and produce another list mapping its values to types `address` for addresses and `int24` for fillers
+- run encode packed function on the 2 lists to produce encoded packed data (see [example using viem](https://www.viem.sh/docs/abi/encodePacked) and [example using eth abi](https://eth-abi.readthedocs.io/en/stable/encoding.html))
+
+Once you have a quote that looks good, decide on the `slippage` (in %) that sounds acceptable and provide this as input to `execute` function of the swap contract. 
+
+> More information on the swap interface coming soon
+ 
+[^1]: There can be multiple pools for the same pair of tokens, hence the need to support parallel edges in the graph
+[^2]: Tokens might have a transfer tax or other fee, which means they need special handling on the swap router, higher slippage setting
+[^3]: For cases when a path component uses a reversed version of the pool (this may happen since search graph is `undirected`), make sure to use tokens following their logical order in the swap chain VS `token0`/`token1` ordering of the pool

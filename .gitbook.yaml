@@ -1,5 +1,0 @@
-root: ./content/
-
-structure:
-  readme: ./content/index.md
-  summary: ./content/index.md

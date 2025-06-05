@@ -1,0 +1,191 @@
+<svg version="1.1" baseProfile="full" width="344.0" height="880.0" viewBox="0 0 344 880" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+	<desc >
+	# Created using http://www.nomnoml.com
+
+	[Velodrome|
+		[&lt;actor id=User&gt;User] --&gt; [website mirrors / CDNs|velodrome.finance: 3DNS | velo.drome.eth: ENS | velodrome.box: onchain 3DNS] \
+	    -:&gt; [IPFS] -:&gt; [Superchain RPCs| OPM | Ink | Unichain] \
+	    -:&gt; [Onchain API / Sugar | LpSugar.vy | VeSugar.vy | RewardsSugar.vy | RelaySugar.vy] \
+	    -:&gt; [Velodrome Contracts]
+	]</desc>
+	<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="bold" font-style="normal">
+		<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+			<g stroke="transparent" fill="transparent">
+				<rect x="0.0" y="0.0" height="880.0" width="344.0" stroke="none"></rect>
+			</g>
+			<g transform="translate(8, 8)" fill="#33322E">
+				<g transform="translate(20, 20)">
+					<g data-name="Velodrome">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Velodrome">
+							<rect x="0.0" y="0.0" height="824.0" width="288.0" data-name="Velodrome"></rect>
+							<path d="M0.0 32.0 L288.0 32.0" fill="none" data-name="Velodrome"></path>
+						</g>
+						<g transform="translate(0, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Velodrome" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Velodrome" data-compartment="0">
+								<text x="136.0" y="14.1" stroke="none" text-anchor="middle" data-name="Velodrome" data-compartment="0">Velodrome</text>
+								
+							</g>
+						</g>
+						<g transform="translate(0, 32)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Velodrome" data-compartment="1">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="Velodrome" data-compartment="1">
+								<g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Velodrome" data-compartment="1">
+									<g stroke-dasharray="6 6" data-name="Velodrome" data-compartment="1">
+										<path d="M116.0 56.0 L116 76 L116 89.33333333333333 L116.0 89.3 " fill="none" data-name="Velodrome" data-compartment="1"></path>
+									</g>
+									<path d="M110.7 82.7 L116.0 89.3 L121.3 82.7 L116.0 96.0 Z" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M116.0 224.0 L116 244 L116 250.66666666666666 L116.0 250.7 " fill="none" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M110.7 250.7 L116.0 250.7 L121.3 250.7 L116.0 264.0 Z" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M116.0 296.0 L116 316 L116 322.6666666666667 L116.0 322.7 " fill="none" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M110.7 322.7 L116.0 322.7 L121.3 322.7 L116.0 336.0 Z" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M116.0 464.0 L116 484 L116 490.6666666666667 L116.0 490.7 " fill="none" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M110.7 490.7 L116.0 490.7 L121.3 490.7 L116.0 504.0 Z" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M116.0 664.0 L116 684 L116 690.6666666666666 L116.0 690.7 " fill="none" data-name="Velodrome" data-compartment="1"></path>
+									<path d="M110.7 690.7 L116.0 690.7 L121.3 690.7 L116.0 704.0 Z" data-name="Velodrome" data-compartment="1"></path>
+									<g data-name="User">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="User">
+											<circle r="4.0" cx="116.0" cy="12.0" data-name="User"></circle>
+											<path d="M116.0 16.0 L116.0 24.0" fill="none" data-name="User"></path>
+											<path d="M112.0 20.0 L120.0 20.0" fill="none" data-name="User"></path>
+											<path d="M112.0 28.0 L116.0 24.0 L120.0 28.0" fill="none" data-name="User"></path>
+										</g>
+										<g transform="translate(90.5, 24)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="User" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="User" data-compartment="0">
+												<text x="17.5" y="14.1" stroke="none" text-anchor="middle" data-name="User" data-compartment="0">User</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="website mirrors / CDNs">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="website mirrors / CDNs">
+											<rect x="0.0" y="96.0" height="128.0" width="232.0" data-name="website mirrors / CDNs"></rect>
+											<path d="M0.0 128.0 L232.0 128.0" fill="none" data-name="website mirrors / CDNs"></path>
+											<path d="M0.0 160.0 L232.0 160.0" fill="none" data-name="website mirrors / CDNs"></path>
+											<path d="M0.0 192.0 L232.0 192.0" fill="none" data-name="website mirrors / CDNs"></path>
+										</g>
+										<g transform="translate(0, 96)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="website mirrors / CDNs" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="website mirrors / CDNs" data-compartment="0">
+												<text x="108.0" y="14.1" stroke="none" text-anchor="middle" data-name="website mirrors / CDNs" data-compartment="0">website mirrors / CDNs</text>
+												
+											</g>
+										</g>
+										<g transform="translate(0, 128)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="website mirrors / CDNs" data-compartment="1">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="website mirrors / CDNs" data-compartment="1">
+												<text x="0.0" y="14.1" stroke="none" data-name="website mirrors / CDNs" data-compartment="1">velodrome.finance: 3DNS</text>
+												
+											</g>
+										</g>
+										<g transform="translate(0, 160)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="website mirrors / CDNs" data-compartment="2">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="website mirrors / CDNs" data-compartment="2">
+												<text x="0.0" y="14.1" stroke="none" data-name="website mirrors / CDNs" data-compartment="2">velo.drome.eth: ENS</text>
+												
+											</g>
+										</g>
+										<g transform="translate(0, 192)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="website mirrors / CDNs" data-compartment="3">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="website mirrors / CDNs" data-compartment="3">
+												<text x="0.0" y="14.1" stroke="none" data-name="website mirrors / CDNs" data-compartment="3">velodrome.box: onchain 3DNS</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="IPFS">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="IPFS">
+											<rect x="90.5" y="264.0" height="32.0" width="51.0" data-name="IPFS"></rect>
+										</g>
+										<g transform="translate(90.5, 264)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="IPFS" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="IPFS" data-compartment="0">
+												<text x="17.5" y="14.1" stroke="none" text-anchor="middle" data-name="IPFS" data-compartment="0">IPFS</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Superchain RPCs">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Superchain RPCs">
+											<rect x="41.0" y="336.0" height="128.0" width="150.0" data-name="Superchain RPCs"></rect>
+											<path d="M41.0 368.0 L191.0 368.0" fill="none" data-name="Superchain RPCs"></path>
+											<path d="M41.0 400.0 L191.0 400.0" fill="none" data-name="Superchain RPCs"></path>
+											<path d="M41.0 432.0 L191.0 432.0" fill="none" data-name="Superchain RPCs"></path>
+										</g>
+										<g transform="translate(41, 336)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Superchain RPCs" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Superchain RPCs" data-compartment="0">
+												<text x="67.0" y="14.1" stroke="none" text-anchor="middle" data-name="Superchain RPCs" data-compartment="0">Superchain RPCs</text>
+												
+											</g>
+										</g>
+										<g transform="translate(41, 368)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain RPCs" data-compartment="1">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Superchain RPCs" data-compartment="1">
+												<text x="0.0" y="14.1" stroke="none" data-name="Superchain RPCs" data-compartment="1">OPM</text>
+												
+											</g>
+										</g>
+										<g transform="translate(41, 400)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain RPCs" data-compartment="2">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Superchain RPCs" data-compartment="2">
+												<text x="0.0" y="14.1" stroke="none" data-name="Superchain RPCs" data-compartment="2">Ink</text>
+												
+											</g>
+										</g>
+										<g transform="translate(41, 432)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain RPCs" data-compartment="3">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Superchain RPCs" data-compartment="3">
+												<text x="0.0" y="14.1" stroke="none" data-name="Superchain RPCs" data-compartment="3">Unichain</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Onchain API / Sugar">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Onchain API / Sugar">
+											<rect x="31.5" y="504.0" height="160.0" width="169.0" data-name="Onchain API / Sugar"></rect>
+											<path d="M31.5 536.0 L200.5 536.0" fill="none" data-name="Onchain API / Sugar"></path>
+											<path d="M31.5 568.0 L200.5 568.0" fill="none" data-name="Onchain API / Sugar"></path>
+											<path d="M31.5 600.0 L200.5 600.0" fill="none" data-name="Onchain API / Sugar"></path>
+											<path d="M31.5 632.0 L200.5 632.0" fill="none" data-name="Onchain API / Sugar"></path>
+										</g>
+										<g transform="translate(31.5, 504)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Onchain API / Sugar" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Onchain API / Sugar" data-compartment="0">
+												<text x="76.5" y="14.1" stroke="none" text-anchor="middle" data-name="Onchain API / Sugar" data-compartment="0">Onchain API / Sugar</text>
+												
+											</g>
+										</g>
+										<g transform="translate(31.5, 536)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Onchain API / Sugar" data-compartment="1">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Onchain API / Sugar" data-compartment="1">
+												<text x="0.0" y="14.1" stroke="none" data-name="Onchain API / Sugar" data-compartment="1">LpSugar.vy</text>
+												
+											</g>
+										</g>
+										<g transform="translate(31.5, 568)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Onchain API / Sugar" data-compartment="2">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Onchain API / Sugar" data-compartment="2">
+												<text x="0.0" y="14.1" stroke="none" data-name="Onchain API / Sugar" data-compartment="2">VeSugar.vy</text>
+												
+											</g>
+										</g>
+										<g transform="translate(31.5, 600)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Onchain API / Sugar" data-compartment="3">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Onchain API / Sugar" data-compartment="3">
+												<text x="0.0" y="14.1" stroke="none" data-name="Onchain API / Sugar" data-compartment="3">RewardsSugar.vy</text>
+												
+											</g>
+										</g>
+										<g transform="translate(31.5, 632)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Onchain API / Sugar" data-compartment="4">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Onchain API / Sugar" data-compartment="4">
+												<text x="0.0" y="14.1" stroke="none" data-name="Onchain API / Sugar" data-compartment="4">RelaySugar.vy</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Velodrome Contracts">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Velodrome Contracts">
+											<rect x="28.0" y="704.0" height="32.0" width="176.0" data-name="Velodrome Contracts"></rect>
+										</g>
+										<g transform="translate(28, 704)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Velodrome Contracts" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Velodrome Contracts" data-compartment="0">
+												<text x="80.0" y="14.1" stroke="none" text-anchor="middle" data-name="Velodrome Contracts" data-compartment="0">Velodrome Contracts</text>
+												
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

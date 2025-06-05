@@ -1,0 +1,621 @@
+<svg version="1.1" baseProfile="full" width="1676.6" height="2296.0" viewBox="0 0 1676.625 2296" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+	<desc >
+	# Created using http://www.nomnoml.com
+
+	#direction: down
+	#ranker: longest-path
+	#gutter: 20
+	#spacing: 80
+	#arrowSize: 0.5
+
+	[&lt;class id=FactoryRegistry&gt;Factory Registry |
+	  [Pool Factory]-[Gauge Factory] - [Voting Rewards Factory]
+	  [CL Pool Factory]-[CL Gauge Factory] - [Voting Rewards Factory]
+	  [Root Pool Factory]-[Root Gauge Factory] - [Root Voting Rewards Factory]
+	  
+	  [&lt;reference&gt; New set of factories
+	  	[Custom* Pool Factory]-&gt;[Custom* Gauge Factory] -&gt; [Custom* Voting Rewards Factory]
+	  ]
+	]
+	
+	[&lt;actor id=Trader&gt; Trader] --&gt; [Router]
+	[Router] -o) [FactoryRegistry]
+	[Router] swaps --&gt; [Pool]
+	
+	[&lt;class id=veNFT&gt; veNFT |
+		[&lt;actor&gt; Locker] locks emissions--&gt; 0...n [VotingEscrow]
+	]
+	
+	[veNFT] votes --&gt; [Voter]
+	
+	[&lt;class id=Gauge&gt; Gauge |
+		[BribeVotingReward] -o) [FeeVotingReward]
+	]
+	
+	
+	[Distributor] rebases --&gt; [veNFT]
+	[Distributor] &lt;- [Minter]
+	
+	[Minter] emissions -o) [Voter]
+	[Voter] -o) [FactoryRegistry]
+	[Voter] --&gt; emissions [Gauge]
+	[Gauge] --&gt; fees [veNFT]
+	[Gauge] --&gt; incentives [veNFT]
+	
+	[Pool] -o) [FactoryRegistry]
+	[&lt;actor id=LP&gt; Liquidity Provider] &lt;-&gt; [Pool]
+	[LP] staking / emissions &lt;--&gt; [Gauge]
+	[Pool] fees --&gt; [Gauge]
+	
+	[&lt;actor id=Protocol&gt; Protocol] incentives/bribes --&gt; [Gauge]
+	
+	[FactoryRegistry] -o) [RootPool]
+	[FactoryRegistry] -o) [RootGauge]
+	[RootPool] -o) [Interop/Hyperlane]
+	[RootGauge] -o) [Interop/Hyperlane]
+	[Interop/Hyperlane] -o) [Superchain]
+	[Interop/Hyperlane] -o) [Router]
+	[Voter] -&gt; [RootGauge]
+	
+	[&lt;class id=Superchain&gt; Superchain (0..n) |
+	    [PoolFactory] - [Pool]
+	    [LeafGaugeFactory] - [LeafGauge]
+	]</desc>
+	<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="bold" font-style="normal">
+		<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+			<g stroke="transparent" fill="transparent">
+				<rect x="0.0" y="0.0" height="2296.0" width="1676.6" stroke="none"></rect>
+			</g>
+			<g transform="translate(8, 8)" fill="#33322E">
+				<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal">
+					<g stroke-dasharray="6 6">
+						<path d="M32.5 896.0 L32.5 936 L856.1663943617203 1000.8396669608243 L856.2 1000.8 " fill="none"></path>
+					</g>
+					<path d="M849.1 1005.6 L856.2 1000.8 L849.9 995.0 L862.8 1001.4 Z"></path>
+					<path d="M896.3 988.0 L896.3125 936 L896.3125 868 L896.3125 868 L896.3125 800 L896.3125 800 L896.3125 744 L896.3125 744 L896.3125 688 L896.3125 688 L896.3211996339967 662.6666658018607 L896.3 662.7 " fill="none"></path>
+					<path d="M888.3 662.7 L888.6 660.4 L889.6 658.3 L891.1 656.6 L893.0 655.4 L895.2 654.7 L897.5 654.7 L899.6 655.4 L901.6 656.6 L903.1 658.3 L904.0 660.4 L904.3 662.7" fill="none"></path>
+					<path d="M896.3 654.7 L896.3 648.0" fill="none"></path>
+					<ellipse cx="896.3" cy="662.7" rx="4.0" ry="4.0"></ellipse>
+					<text x="904.3" y="1040.0" stroke="none">swaps</text>
+					<g stroke-dasharray="6 6">
+						<path d="M896.3 1020.0 L896.3125 1072 L823.7660026974727 1120.3051340667992 L823.8 1120.3 " fill="none"></path>
+					</g>
+					<path d="M826.4 1112.2 L823.8 1120.3 L832.3 1121.0 L818.2 1124.0 Z"></path>
+					<text x="694.9" y="1836.0" stroke="none">votes</text>
+					<g stroke-dasharray="6 6">
+						<path d="M686.9 1816.0 L686.875 1856 L347.8430222301655 1906.8150973706545 L347.8 1906.8 " fill="none"></path>
+					</g>
+					<path d="M353.6 1900.6 L347.8 1906.8 L355.2 1911.1 L341.3 1907.8 Z"></path>
+					<text x="221.8" y="1400.0" stroke="none">rebases</text>
+					<g stroke-dasharray="6 6">
+						<path d="M290.1 1380.0 L345.5 1520 L557.0184349388156 1624.0940229065427 L557.0 1624.1 " fill="none"></path>
+					</g>
+					<path d="M548.7 1625.9 L557.0 1624.1 L553.4 1616.4 L563.0 1627.0 Z"></path>
+					<path d="M281.1 1386.6 L265.5 1520 L265.5 1672 L265.5 1672.0 " fill="none"></path>
+					<path d="M285.6 1393.9 L281.1 1386.6 L275.0 1392.6 L281.9 1380.0 Z"></path>
+					<text x="179.5" y="1724.0" stroke="none">emissions</text>
+					<path d="M265.5 1704.0 L265.5 1856 L290.09095593696776 1884.839655130266 L290.1 1884.8 " fill="none"></path>
+					<path d="M296.2 1879.6 L297.4 1881.6 L298.0 1883.8 L298.0 1886.0 L297.3 1888.2 L296.1 1890.1 L294.4 1891.6 L292.3 1892.5 L290.0 1892.8 L287.8 1892.5 L285.7 1891.5 L284.0 1890.0" fill="none"></path>
+					<path d="M295.3 1890.9 L299.6 1896.0" fill="none"></path>
+					<ellipse cx="290.1" cy="1884.8" rx="4.0" ry="4.0"></ellipse>
+					<path d="M285.3 1902.7 L145 1856 L145 1688 L145 1688 L145 1520 L145 1520 L145 1364 L145 1364 L145 1208 L145 1208 L145 1140 L145 1140 L145 1072 L145 1072 L145 1004 L145 1004 L145 936 L145 936 L145 868 L145 868 L145 800 L145 800 L145 744 L145 744 L145 688 L145 688 L317.3629287113566 604.5065543695466 L317.4 604.5 " fill="none"></path>
+					<path d="M313.9 597.3 L316.0 596.6 L318.3 596.6 L320.5 597.2 L322.5 598.3 L324.0 600.0 L325.0 602.1 L325.4 604.3 L325.1 606.6 L324.2 608.7 L322.7 610.4 L320.9 611.7" fill="none"></path>
+					<path d="M324.6 601.0 L330.6 598.1" fill="none"></path>
+					<ellipse cx="317.4" cy="604.5" rx="4.0" ry="4.0"></ellipse>
+					<text x="535.6" y="1464.7" stroke="none">emissions</text>
+					<g stroke-dasharray="6 6">
+						<path d="M341.3 1898.0 L425.5 1856 L425.5 1688 L425.5 1688 L425.5 1520 L425.5 1520 L522.2587578773124 1448.6739930118808 L522.3 1448.7 " fill="none"></path>
+					</g>
+					<path d="M520.1 1456.9 L522.3 1448.7 L513.7 1448.3 L527.6 1444.7 Z"></path>
+					<text x="802.3" y="1552.0" stroke="none">fees</text>
+					<g stroke-dasharray="6 6">
+						<path d="M746.6 1453.6 L827.875 1520 L798.5893797535725 1554.8935049744669 L798.6 1554.9 " fill="none"></path>
+					</g>
+					<path d="M798.8 1546.4 L798.6 1554.9 L807.0 1553.2 L794.3 1560.0 Z"></path>
+					<text x="694.7" y="1552.0" stroke="none">incentives</text>
+					<g stroke-dasharray="6 6">
+						<path d="M674.0 1480.0 L686.6875 1520 L686.7247023855864 1553.333337485381 L686.7 1553.3 " fill="none"></path>
+					</g>
+					<path d="M681.4 1546.7 L686.7 1553.3 L692.1 1546.7 L686.7 1560.0 Z"></path>
+					<path d="M791.5 1124.0 L782.8125 1072 L782.8125 1004 L782.8125 1004 L782.8125 936 L782.8125 936 L782.8125 868 L782.8125 868 L782.8125 800 L782.8125 800 L782.8125 744 L782.8125 744 L782.8125 688 L782.8125 688 L790.9284441403197 662.000407770505 L790.9 662.0 " fill="none"></path>
+					<path d="M783.3 659.6 L784.3 657.6 L785.8 655.9 L787.7 654.7 L789.9 654.1 L792.2 654.1 L794.4 654.8 L796.3 656.0 L797.7 657.8 L798.6 659.9 L798.9 662.1 L798.6 664.4" fill="none"></path>
+					<path d="M793.3 654.4 L795.3 648.0" fill="none"></path>
+					<ellipse cx="790.9" cy="662.0" rx="4.0" ry="4.0"></ellipse>
+					<path d="M639.1 1037.4 L664.8125 1072 L762.7863145873796 1123.4954155898886 L762.8 1123.5 " fill="none"></path>
+					<path d="M754.4 1125.1 L762.8 1123.5 L759.4 1115.7 L768.7 1126.6 Z"></path>
+					<path d="M647.4 1039.5 L639.1 1037.4 L638.8 1045.9 L635.2 1032.0 Z"></path>
+					<text x="442.8" y="1052.0" stroke="none">staking / emissions</text>
+					<g stroke-dasharray="6 6">
+						<path d="M594.6 1037.7 L574.4375 1072 L574.4375 1140 L574.4375 1140 L574.4375 1208 L574.4375 1208 L588.0254553763832 1241.814094336443 L588.0 1241.8 " fill="none"></path>
+					</g>
+					<path d="M580.6 1237.6 L588.0 1241.8 L590.5 1233.6 L590.5 1248.0 Z"></path>
+					<path d="M595.8 1046.2 L594.6 1037.7 L586.6 1040.8 L598.0 1032.0 Z"></path>
+					<text x="802.2" y="1176.0" stroke="none">fees</text>
+					<g stroke-dasharray="6 6">
+						<path d="M794.2 1156.0 L794.1875 1208 L751.3550169222349 1250.5427289144855 L751.4 1250.5 " fill="none"></path>
+					</g>
+					<path d="M752.3 1242.1 L751.4 1250.5 L759.8 1249.6 L746.6 1255.2 Z"></path>
+					<text x="190.4" y="1188.0" stroke="none">incentives/bribes</text>
+					<g stroke-dasharray="6 6">
+						<path d="M328.8 1168.0 L328.75 1208 L521.6762034884039 1305.5970417322774 L521.7 1305.6 " fill="none"></path>
+					</g>
+					<path d="M513.3 1307.3 L521.7 1305.6 L518.1 1297.8 L527.6 1308.6 Z"></path>
+					<path d="M1215.7 648.0 L1255.125 688 L1255.125 713.3333333333334 L1255.1 713.3 " fill="none"></path>
+					<path d="M1263.1 713.3 L1262.8 715.6 L1261.9 717.7 L1260.4 719.4 L1258.4 720.6 L1256.3 721.3 L1254.0 721.3 L1251.8 720.6 L1249.9 719.4 L1248.4 717.7 L1247.4 715.6 L1247.1 713.3" fill="none"></path>
+					<path d="M1255.1 721.3 L1255.1 728.0" fill="none"></path>
+					<ellipse cx="1255.1" cy="713.3" rx="4.0" ry="4.0"></ellipse>
+					<path d="M1032.8 648.0 L1049.625 688 L1049.625 744 L1049.625 744 L1049.625 800 L1049.625 800 L1049.625 868 L1049.625 868 L1049.625 936 L1049.625 936 L1049.625 1004 L1049.625 1004 L1049.625 1072 L1049.625 1072 L1049.625 1140 L1049.625 1140 L1049.625 1208 L1049.625 1208 L1049.625 1364 L1049.625 1364 L1049.625 1520 L1049.625 1520 L1049.625 1688 L1049.625 1688 L1049.625 1856 L1049.625 1856 L1049.625 1912 L1049.625 1912 L1049.625 1968 L1049.625 1968 L1017.5226424680446 2093.7888295129683 L1017.5 2093.8 " fill="none"></path>
+					<path d="M1025.3 2095.8 L1024.4 2097.9 L1023.0 2099.6 L1021.1 2100.9 L1018.9 2101.7 L1016.7 2101.7 L1014.5 2101.2 L1012.5 2100.0 L1011.0 2098.4 L1009.9 2096.3 L1009.5 2094.1 L1009.8 2091.8" fill="none"></path>
+					<path d="M1015.5 2101.5 L1013.9 2108.0" fill="none"></path>
+					<ellipse cx="1017.5" cy="2093.8" rx="4.0" ry="4.0"></ellipse>
+					<path d="M1255.1 760.0 L1255.125 800 L1255.125 837.3333333333334 L1255.1 837.3 " fill="none"></path>
+					<path d="M1263.1 837.3 L1262.8 839.6 L1261.9 841.7 L1260.4 843.4 L1258.4 844.6 L1256.3 845.3 L1254.0 845.3 L1251.8 844.6 L1249.9 843.4 L1248.4 841.7 L1247.4 839.6 L1247.1 837.3" fill="none"></path>
+					<path d="M1255.1 845.3 L1255.1 852.0" fill="none"></path>
+					<ellipse cx="1255.1" cy="837.3" rx="4.0" ry="4.0"></ellipse>
+					<path d="M1022.7 2108.0 L1135.3125 1968 L1135.3125 1912 L1135.3125 1912 L1135.3125 1856 L1135.3125 1856 L1135.3125 1688 L1135.3125 1688 L1135.3125 1520 L1135.3125 1520 L1135.3125 1364 L1135.3125 1364 L1135.3125 1208 L1135.3125 1208 L1135.3125 1140 L1135.3125 1140 L1135.3125 1072 L1135.3125 1072 L1135.3125 1004 L1135.3125 1004 L1135.3125 936 L1135.3125 936 L1214.178352907065 891.2394115999548 L1214.2 891.2 " fill="none"></path>
+					<path d="M1210.2 884.3 L1212.3 883.5 L1214.6 883.3 L1216.9 883.7 L1218.9 884.8 L1220.5 886.3 L1221.6 888.3 L1222.1 890.5 L1222.0 892.8 L1221.3 895.0 L1219.9 896.8 L1218.1 898.2" fill="none"></path>
+					<path d="M1221.1 887.3 L1226.9 884.0" fill="none"></path>
+					<ellipse cx="1214.2" cy="891.2" rx="4.0" ry="4.0"></ellipse>
+					<path d="M1294.1 884.0 L1420.625 936 L1420.625 1004 L1420.625 1004 L1420.625 1072 L1420.625 1072 L1420.625 1140 L1420.625 1140 L1420.625 1208 L1420.625 1208 L1420.625 1364 L1420.625 1364 L1420.625 1520 L1420.625 1520 L1420.625 1688 L1420.625 1688 L1420.625 1856 L1420.625 1856 L1420.625 1912 L1420.625 1912 L1420.625 1968 L1420.625 1968 L1420.625 1993.3333333333333 L1420.6 1993.3 " fill="none"></path>
+					<path d="M1428.6 1993.3 L1428.3 1995.6 L1427.4 1997.7 L1425.9 1999.4 L1423.9 2000.6 L1421.8 2001.3 L1419.5 2001.3 L1417.3 2000.6 L1415.4 1999.4 L1413.9 1997.7 L1412.9 1995.6 L1412.6 1993.3" fill="none"></path>
+					<path d="M1420.6 2001.3 L1420.6 2008.0" fill="none"></path>
+					<ellipse cx="1420.6" cy="1993.3" rx="4.0" ry="4.0"></ellipse>
+					<path d="M1245.8 884.0 L1215.3125 936 L944.1568841012906 993.8011971194741 L944.2 993.8 " fill="none"></path>
+					<path d="M945.8 1001.6 L943.6 1001.8 L941.3 1001.3 L939.3 1000.2 L937.7 998.6 L936.6 996.6 L936.2 994.3 L936.3 992.1 L937.2 989.9 L938.5 988.1 L940.4 986.8 L942.5 986.0" fill="none"></path>
+					<path d="M936.3 995.5 L929.8 996.9" fill="none"></path>
+					<ellipse cx="944.2" cy="993.8" rx="4.0" ry="4.0"></ellipse>
+					<path d="M313.3 1928.0 L313.25 1968 L952.3069849529088 2111.1212413138146 L952.3 2111.1 " fill="none"></path>
+					<path d="M944.6 2114.9 L952.3 2111.1 L947.0 2104.5 L958.8 2112.6 Z"></path>
+					<g data-name="FactoryRegistry">
+						<g fill="#eee8d5" stroke="#33322E" data-name="FactoryRegistry">
+							<rect x="330.6" y="0.0" height="648.0" width="1131.8" data-name="FactoryRegistry"></rect>
+							<path d="M330.6 32.0 L1462.3 32.0" fill="none" data-name="FactoryRegistry"></path>
+						</g>
+						<g transform="translate(330.5625, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="FactoryRegistry" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="FactoryRegistry" data-compartment="0">
+								<text x="557.9" y="14.1" stroke="none" text-anchor="middle" data-name="FactoryRegistry" data-compartment="0">Factory Registry</text>
+								
+							</g>
+						</g>
+						<g transform="translate(330.5625, 32)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="FactoryRegistry" data-compartment="1">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="FactoryRegistry" data-compartment="1">
+								<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="FactoryRegistry" data-compartment="1">
+									<path d="M64.0 32.0 L64 72 L64 112 L64.0 112.0 " fill="none" data-name="FactoryRegistry" data-compartment="1"></path>
+									<path d="M64.0 144.0 L64 184 L165.76923076923077 376 L165.8 376.0 " fill="none" data-name="FactoryRegistry" data-compartment="1"></path>
+									<path d="M284.5 32.0 L284.5 72 L284.5 112 L284.5 112.0 " fill="none" data-name="FactoryRegistry" data-compartment="1"></path>
+									<path d="M284.5 144.0 L284.5 184 L182.73076923076923 376 L182.7 376.0 " fill="none" data-name="FactoryRegistry" data-compartment="1"></path>
+									<path d="M553.8 32.0 L553.75 72 L553.75 112 L553.8 112.0 " fill="none" data-name="FactoryRegistry" data-compartment="1"></path>
+									<path d="M553.8 144.0 L553.75 184 L553.75 376 L553.8 376.0 " fill="none" data-name="FactoryRegistry" data-compartment="1"></path>
+									<g data-name="Pool Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Pool Factory">
+											<rect x="7.5" y="0.0" height="32.0" width="113.0" data-name="Pool Factory"></rect>
+										</g>
+										<g transform="translate(7.5, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Pool Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Pool Factory" data-compartment="0">
+												<text x="48.5" y="14.1" stroke="none" text-anchor="middle" data-name="Pool Factory" data-compartment="0">Pool Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Gauge Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Gauge Factory">
+											<rect x="0.0" y="112.0" height="32.0" width="128.0" data-name="Gauge Factory"></rect>
+										</g>
+										<g transform="translate(0, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Gauge Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Gauge Factory" data-compartment="0">
+												<text x="56.0" y="14.1" stroke="none" text-anchor="middle" data-name="Gauge Factory" data-compartment="0">Gauge Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Voting Rewards Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Voting Rewards Factory">
+											<rect x="75.8" y="376.0" height="32.0" width="197.0" data-name="Voting Rewards Factory"></rect>
+										</g>
+										<g transform="translate(75.75, 376)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Voting Rewards Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Voting Rewards Factory" data-compartment="0">
+												<text x="90.5" y="14.1" stroke="none" text-anchor="middle" data-name="Voting Rewards Factory" data-compartment="0">Voting Rewards Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="CL Pool Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="CL Pool Factory">
+											<rect x="215.5" y="0.0" height="32.0" width="138.0" data-name="CL Pool Factory"></rect>
+										</g>
+										<g transform="translate(215.5, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="CL Pool Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="CL Pool Factory" data-compartment="0">
+												<text x="61.0" y="14.1" stroke="none" text-anchor="middle" data-name="CL Pool Factory" data-compartment="0">CL Pool Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="CL Gauge Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="CL Gauge Factory">
+											<rect x="208.0" y="112.0" height="32.0" width="153.0" data-name="CL Gauge Factory"></rect>
+										</g>
+										<g transform="translate(208, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="CL Gauge Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="CL Gauge Factory" data-compartment="0">
+												<text x="68.5" y="14.1" stroke="none" text-anchor="middle" data-name="CL Gauge Factory" data-compartment="0">CL Gauge Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Root Pool Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Root Pool Factory">
+											<rect x="477.3" y="0.0" height="32.0" width="153.0" data-name="Root Pool Factory"></rect>
+										</g>
+										<g transform="translate(477.25, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Root Pool Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Root Pool Factory" data-compartment="0">
+												<text x="68.5" y="14.1" stroke="none" text-anchor="middle" data-name="Root Pool Factory" data-compartment="0">Root Pool Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Root Gauge Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Root Gauge Factory">
+											<rect x="469.3" y="112.0" height="32.0" width="169.0" data-name="Root Gauge Factory"></rect>
+										</g>
+										<g transform="translate(469.25, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Root Gauge Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Root Gauge Factory" data-compartment="0">
+												<text x="76.5" y="14.1" stroke="none" text-anchor="middle" data-name="Root Gauge Factory" data-compartment="0">Root Gauge Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Root Voting Rewards Factory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Root Voting Rewards Factory">
+											<rect x="434.8" y="376.0" height="32.0" width="238.0" data-name="Root Voting Rewards Factory"></rect>
+										</g>
+										<g transform="translate(434.75, 376)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Root Voting Rewards Factory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Root Voting Rewards Factory" data-compartment="0">
+												<text x="111.0" y="14.1" stroke="none" text-anchor="middle" data-name="Root Voting Rewards Factory" data-compartment="0">Root Voting Rewards Factory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="New set of factories">
+										<g fill="#fdf6e3" stroke="#33322E" stroke-dasharray="6 6" data-name="New set of factories">
+											<rect x="752.8" y="224.0" height="336.0" width="323.0" data-name="New set of factories"></rect>
+										</g>
+										<g transform="translate(752.75, 224)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="New set of factories" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="New set of factories" data-compartment="0">
+												<text x="153.5" y="14.1" stroke="none" text-anchor="middle" data-name="New set of factories" data-compartment="0">New set of factories</text>
+												<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="New set of factories" data-compartment="0">
+													<path d="M133.5 32.0 L133.5 72 L133.5 105.33333333333333 L133.5 105.3 " fill="none" data-name="New set of factories" data-compartment="0"></path>
+													<path d="M128.2 98.7 L133.5 105.3 L138.8 98.7 L133.5 112.0 Z" data-name="New set of factories" data-compartment="0"></path>
+													<path d="M133.5 144.0 L133.5 184 L133.5 217.33333333333334 L133.5 217.3 " fill="none" data-name="New set of factories" data-compartment="0"></path>
+													<path d="M128.2 210.7 L133.5 217.3 L138.8 210.7 L133.5 224.0 Z" data-name="New set of factories" data-compartment="0"></path>
+													<g data-name="Custom* Pool Factory">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Custom* Pool Factory">
+															<rect x="42.0" y="0.0" height="32.0" width="183.0" data-name="Custom* Pool Factory"></rect>
+														</g>
+														<g transform="translate(42, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Custom* Pool Factory" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Custom* Pool Factory" data-compartment="0">
+																<text x="83.5" y="14.1" stroke="none" text-anchor="middle" data-name="Custom* Pool Factory" data-compartment="0">Custom* Pool Factory</text>
+																
+															</g>
+														</g>
+													</g>
+													<g data-name="Custom* Gauge Factory">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Custom* Gauge Factory">
+															<rect x="34.5" y="112.0" height="32.0" width="198.0" data-name="Custom* Gauge Factory"></rect>
+														</g>
+														<g transform="translate(34.5, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Custom* Gauge Factory" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Custom* Gauge Factory" data-compartment="0">
+																<text x="91.0" y="14.1" stroke="none" text-anchor="middle" data-name="Custom* Gauge Factory" data-compartment="0">Custom* Gauge Factory</text>
+																
+															</g>
+														</g>
+													</g>
+													<g data-name="Custom* Voting Rewards Factory">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Custom* Voting Rewards Factory">
+															<rect x="0.0" y="224.0" height="32.0" width="267.0" data-name="Custom* Voting Rewards Factory"></rect>
+														</g>
+														<g transform="translate(0, 224)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Custom* Voting Rewards Factory" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Custom* Voting Rewards Factory" data-compartment="0">
+																<text x="125.5" y="14.1" stroke="none" text-anchor="middle" data-name="Custom* Voting Rewards Factory" data-compartment="0">Custom* Voting Rewards Factory</text>
+																
+															</g>
+														</g>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g data-name="Trader">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Trader">
+							<circle r="4.0" cx="32.5" cy="852.0" data-name="Trader"></circle>
+							<path d="M32.5 856.0 L32.5 864.0" fill="none" data-name="Trader"></path>
+							<path d="M28.5 860.0 L36.5 860.0" fill="none" data-name="Trader"></path>
+							<path d="M28.5 868.0 L32.5 864.0 L36.5 868.0" fill="none" data-name="Trader"></path>
+						</g>
+						<g transform="translate(0, 864)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Trader" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Trader" data-compartment="0">
+								<text x="24.5" y="14.1" stroke="none" text-anchor="middle" data-name="Trader" data-compartment="0">Trader</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Router">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Router">
+							<rect x="862.8" y="988.0" height="32.0" width="67.0" data-name="Router"></rect>
+						</g>
+						<g transform="translate(862.8125, 988)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Router" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Router" data-compartment="0">
+								<text x="25.5" y="14.1" stroke="none" text-anchor="middle" data-name="Router" data-compartment="0">Router</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Pool">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Pool">
+							<rect x="768.7" y="1124.0" height="32.0" width="51.0" data-name="Pool"></rect>
+						</g>
+						<g transform="translate(768.6875, 1124)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Pool" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Pool" data-compartment="0">
+								<text x="17.5" y="14.1" stroke="none" text-anchor="middle" data-name="Pool" data-compartment="0">Pool</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="veNFT">
+						<g fill="#eee8d5" stroke="#33322E" data-name="veNFT">
+							<rect x="563.0" y="1560.0" height="256.0" width="247.8" data-name="veNFT"></rect>
+							<path d="M563.0 1592.0 L810.8 1592.0" fill="none" data-name="veNFT"></path>
+						</g>
+						<g transform="translate(563, 1560)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="veNFT" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="veNFT" data-compartment="0">
+								<text x="115.9" y="14.1" stroke="none" text-anchor="middle" data-name="veNFT" data-compartment="0">veNFT</text>
+								
+							</g>
+						</g>
+						<g transform="translate(563, 1592)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="veNFT" data-compartment="1">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="veNFT" data-compartment="1">
+								<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="veNFT" data-compartment="1">
+									<text x="68.5" y="76.0" stroke="none" data-name="veNFT" data-compartment="1">locks emissions</text>
+									<text x="20.6" y="128.0" stroke="none" data-name="veNFT" data-compartment="1">0...n</text>
+									<g stroke-dasharray="6 6" data-name="veNFT" data-compartment="1">
+										<path d="M60.5 56.0 L60.5 96 L60.5 129.33333333333334 L60.5 129.3 " fill="none" data-name="veNFT" data-compartment="1"></path>
+									</g>
+									<path d="M55.2 122.7 L60.5 129.3 L65.8 122.7 L60.5 136.0 Z" data-name="veNFT" data-compartment="1"></path>
+									<g data-name="Locker">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Locker">
+											<circle r="4.0" cx="60.5" cy="12.0" data-name="Locker"></circle>
+											<path d="M60.5 16.0 L60.5 24.0" fill="none" data-name="Locker"></path>
+											<path d="M56.5 20.0 L64.5 20.0" fill="none" data-name="Locker"></path>
+											<path d="M56.5 28.0 L60.5 24.0 L64.5 28.0" fill="none" data-name="Locker"></path>
+										</g>
+										<g transform="translate(26.5, 24)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Locker" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Locker" data-compartment="0">
+												<text x="26.0" y="14.1" stroke="none" text-anchor="middle" data-name="Locker" data-compartment="0">Locker</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="VotingEscrow">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="VotingEscrow">
+											<rect x="0.0" y="136.0" height="32.0" width="121.0" data-name="VotingEscrow"></rect>
+										</g>
+										<g transform="translate(0, 136)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="VotingEscrow" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="VotingEscrow" data-compartment="0">
+												<text x="52.5" y="14.1" stroke="none" text-anchor="middle" data-name="VotingEscrow" data-compartment="0">VotingEscrow</text>
+												
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g data-name="Voter">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Voter">
+							<rect x="285.3" y="1896.0" height="32.0" width="56.0" data-name="Voter"></rect>
+						</g>
+						<g transform="translate(285.25, 1896)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Voter" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Voter" data-compartment="0">
+								<text x="20.0" y="14.1" stroke="none" text-anchor="middle" data-name="Voter" data-compartment="0">Voter</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Gauge">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Gauge">
+							<rect x="527.6" y="1248.0" height="232.0" width="219.0" data-name="Gauge"></rect>
+							<path d="M527.6 1280.0 L746.6 1280.0" fill="none" data-name="Gauge"></path>
+						</g>
+						<g transform="translate(527.625, 1248)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Gauge" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Gauge" data-compartment="0">
+								<text x="101.5" y="14.1" stroke="none" text-anchor="middle" data-name="Gauge" data-compartment="0">Gauge</text>
+								
+							</g>
+						</g>
+						<g transform="translate(527.625, 1280)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Gauge" data-compartment="1">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="Gauge" data-compartment="1">
+								<g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Gauge" data-compartment="1">
+									<path d="M81.5 32.0 L81.5 72 L81.5 97.33333333333333 L81.5 97.3 " fill="none" data-name="Gauge" data-compartment="1"></path>
+									<path d="M89.5 97.3 L89.2 99.6 L88.2 101.7 L86.7 103.4 L84.8 104.6 L82.6 105.3 L80.4 105.3 L78.2 104.6 L76.3 103.4 L74.8 101.7 L73.8 99.6 L73.5 97.3" fill="none" data-name="Gauge" data-compartment="1"></path>
+									<path d="M81.5 105.3 L81.5 112.0" fill="none" data-name="Gauge" data-compartment="1"></path>
+									<ellipse cx="81.5" cy="97.3" rx="4.0" ry="4.0" data-name="Gauge" data-compartment="1"></ellipse>
+									<g data-name="BribeVotingReward">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="BribeVotingReward">
+											<rect x="0.0" y="0.0" height="32.0" width="163.0" data-name="BribeVotingReward"></rect>
+										</g>
+										<g transform="translate(0, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="BribeVotingReward" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="BribeVotingReward" data-compartment="0">
+												<text x="73.5" y="14.1" stroke="none" text-anchor="middle" data-name="BribeVotingReward" data-compartment="0">BribeVotingReward</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="FeeVotingReward">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="FeeVotingReward">
+											<rect x="6.5" y="112.0" height="32.0" width="150.0" data-name="FeeVotingReward"></rect>
+										</g>
+										<g transform="translate(6.5, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="FeeVotingReward" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="FeeVotingReward" data-compartment="0">
+												<text x="67.0" y="14.1" stroke="none" text-anchor="middle" data-name="FeeVotingReward" data-compartment="0">FeeVotingReward</text>
+												
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g data-name="Distributor">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Distributor">
+							<rect x="234.8" y="1348.0" height="32.0" width="98.0" data-name="Distributor"></rect>
+						</g>
+						<g transform="translate(234.75, 1348)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Distributor" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Distributor" data-compartment="0">
+								<text x="41.0" y="14.1" stroke="none" text-anchor="middle" data-name="Distributor" data-compartment="0">Distributor</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Minter">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Minter">
+							<rect x="233.5" y="1672.0" height="32.0" width="64.0" data-name="Minter"></rect>
+						</g>
+						<g transform="translate(233.5, 1672)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Minter" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Minter" data-compartment="0">
+								<text x="24.0" y="14.1" stroke="none" text-anchor="middle" data-name="Minter" data-compartment="0">Minter</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="LP">
+						<g fill="#eee8d5" stroke="#33322E" data-name="LP">
+							<circle r="4.0" cx="614.4" cy="988.0" data-name="LP"></circle>
+							<path d="M614.4 992.0 L614.4 1000.0" fill="none" data-name="LP"></path>
+							<path d="M610.4 996.0 L618.4 996.0" fill="none" data-name="LP"></path>
+							<path d="M610.4 1004.0 L614.4 1000.0 L618.4 1004.0" fill="none" data-name="LP"></path>
+						</g>
+						<g transform="translate(538.4375, 1000)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="LP" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LP" data-compartment="0">
+								<text x="68.0" y="14.1" stroke="none" text-anchor="middle" data-name="LP" data-compartment="0">Liquidity Provider</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Protocol">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Protocol">
+							<circle r="4.0" cx="328.8" cy="1124.0" data-name="Protocol"></circle>
+							<path d="M328.8 1128.0 L328.8 1136.0" fill="none" data-name="Protocol"></path>
+							<path d="M324.8 1132.0 L332.8 1132.0" fill="none" data-name="Protocol"></path>
+							<path d="M324.8 1140.0 L328.8 1136.0 L332.8 1140.0" fill="none" data-name="Protocol"></path>
+						</g>
+						<g transform="translate(288.25, 1136)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Protocol" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Protocol" data-compartment="0">
+								<text x="32.5" y="14.1" stroke="none" text-anchor="middle" data-name="Protocol" data-compartment="0">Protocol</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="RootPool">
+						<g fill="#eee8d5" stroke="#33322E" data-name="RootPool">
+							<rect x="1211.6" y="728.0" height="32.0" width="87.0" data-name="RootPool"></rect>
+						</g>
+						<g transform="translate(1211.625, 728)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="RootPool" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RootPool" data-compartment="0">
+								<text x="35.5" y="14.1" stroke="none" text-anchor="middle" data-name="RootPool" data-compartment="0">RootPool</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="RootGauge">
+						<g fill="#eee8d5" stroke="#33322E" data-name="RootGauge">
+							<rect x="958.8" y="2108.0" height="32.0" width="102.0" data-name="RootGauge"></rect>
+						</g>
+						<g transform="translate(958.8125, 2108)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="RootGauge" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RootGauge" data-compartment="0">
+								<text x="43.0" y="14.1" stroke="none" text-anchor="middle" data-name="RootGauge" data-compartment="0">RootGauge</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Interop/Hyperlane">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Interop/Hyperlane">
+							<rect x="1179.1" y="852.0" height="32.0" width="152.0" data-name="Interop/Hyperlane"></rect>
+						</g>
+						<g transform="translate(1179.125, 852)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Interop/Hyperlane" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Interop/Hyperlane" data-compartment="0">
+								<text x="68.0" y="14.1" stroke="none" text-anchor="middle" data-name="Interop/Hyperlane" data-compartment="0">Interop/Hyperlane</text>
+								
+							</g>
+						</g>
+					</g>
+					<g data-name="Superchain">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Superchain">
+							<rect x="1220.6" y="2008.0" height="232.0" width="400.0" data-name="Superchain"></rect>
+							<path d="M1220.6 2040.0 L1620.6 2040.0" fill="none" data-name="Superchain"></path>
+						</g>
+						<g transform="translate(1220.625, 2008)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Superchain" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Superchain" data-compartment="0">
+								<text x="192.0" y="14.1" stroke="none" text-anchor="middle" data-name="Superchain" data-compartment="0">Superchain (0..n)</text>
+								
+							</g>
+						</g>
+						<g transform="translate(1220.625, 2040)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain" data-compartment="1">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="Superchain" data-compartment="1">
+								<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain" data-compartment="1">
+									<path d="M54.0 32.0 L54 72 L54 112 L54.0 112.0 " fill="none" data-name="Superchain" data-compartment="1"></path>
+									<path d="M266.0 32.0 L266 72 L266 112 L266.0 112.0 " fill="none" data-name="Superchain" data-compartment="1"></path>
+									<g data-name="PoolFactory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="PoolFactory">
+											<rect x="0.0" y="0.0" height="32.0" width="108.0" data-name="PoolFactory"></rect>
+										</g>
+										<g transform="translate(0, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="PoolFactory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="PoolFactory" data-compartment="0">
+												<text x="46.0" y="14.1" stroke="none" text-anchor="middle" data-name="PoolFactory" data-compartment="0">PoolFactory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="Pool">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Pool">
+											<rect x="28.5" y="112.0" height="32.0" width="51.0" data-name="Pool"></rect>
+										</g>
+										<g transform="translate(28.5, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Pool" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Pool" data-compartment="0">
+												<text x="17.5" y="14.1" stroke="none" text-anchor="middle" data-name="Pool" data-compartment="0">Pool</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="LeafGaugeFactory">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="LeafGaugeFactory">
+											<rect x="188.0" y="0.0" height="32.0" width="156.0" data-name="LeafGaugeFactory"></rect>
+										</g>
+										<g transform="translate(188, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="LeafGaugeFactory" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LeafGaugeFactory" data-compartment="0">
+												<text x="70.0" y="14.1" stroke="none" text-anchor="middle" data-name="LeafGaugeFactory" data-compartment="0">LeafGaugeFactory</text>
+												
+											</g>
+										</g>
+									</g>
+									<g data-name="LeafGauge">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="LeafGauge">
+											<rect x="217.0" y="112.0" height="32.0" width="98.0" data-name="LeafGauge"></rect>
+										</g>
+										<g transform="translate(217, 112)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="LeafGauge" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LeafGauge" data-compartment="0">
+												<text x="41.0" y="14.1" stroke="none" text-anchor="middle" data-name="LeafGauge" data-compartment="0">LeafGauge</text>
+												
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

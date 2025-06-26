@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Runs code QA and tests
-        run: docker run --rm -v "$(pwd):/app" -w /app -t node:lts-alpine sh -c 'yarn && yarn build'
+        run: docker run --rm -v "$(pwd):/app" -w /app -t node:lts-alpine sh -c 'yarn install --frozen-lockfile && yarn build'

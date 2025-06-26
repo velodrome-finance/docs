@@ -1,0 +1,266 @@
+<svg version="1.1" baseProfile="full" width="1356.0" height="304.0" viewBox="0 0 1356 304" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+	<desc >
+	# Created using nomnoml.com
+	#direction: right
+
+	[&lt;reference&gt; Superchain |
+	  [Origin Chain|
+	      [&lt;database&gt; Pools]
+	      [&lt;choice&gt; Router]
+	      [Pools] -o) [Router]
+	  ]
+
+	  [Destination Chain|
+	      [&lt;database&gt; Pools]
+	      [&lt;choice&gt; Router]
+
+	      [Router] -o) [Pools]
+	  ]
+
+	  [Interoperable Tokens|
+	      *XERC20 + SuperchainERC20 tokens|
+	      *SuperchainERC20 tokens |
+	      oUSDT |
+	      VELO
+	  ]
+
+	  [Origin Chain] &lt;--&gt; [Interoperable Tokens]
+	  [Interoperable Tokens] &lt;--&gt; [Destination Chain]
+	]
+
+
+	[&lt;transceiver&gt;Hyperlane]  -o) [&lt;label&gt; oUSDT]
+	[oUSDT]  - [Superchain]
+	[&lt;actor&gt; EVM] - [Hyperlane]
+	[&lt;actor&gt; non-EVM] - [Hyperlane]
+	</desc>
+	<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="bold" font-style="normal">
+		<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+			<g stroke="transparent" fill="transparent">
+				<rect x="0.0" y="0.0" height="304.0" width="1356.0" stroke="none"></rect>
+			</g>
+			<g transform="translate(8, 8)" fill="#33322E">
+				<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal">
+					<path d="M218.0 124.0 L238 124 L243.33333333333334 124 L243.3 124.0 " fill="none"></path>
+					<path d="M243.3 116.0 L245.6 116.3 L247.7 117.3 L249.4 118.8 L250.6 120.7 L251.3 122.9 L251.3 125.1 L250.6 127.3 L249.4 129.2 L247.7 130.7 L245.6 131.7 L243.3 132.0" fill="none"></path>
+					<path d="M251.3 124.0 L258.0 124.0" fill="none"></path>
+					<ellipse cx="243.3" cy="124.0" rx="4.0" ry="4.0"></ellipse>
+					<path d="M327.0 124.0 L347 124 L367 124 L367.0 124.0 " fill="none"></path>
+					<path d="M68.0 76.0 L105 76 L149.33333333333334 108 L149.3 108.0 " fill="none"></path>
+					<path d="M85.0 172.0 L105 172 L149.33333333333334 140 L149.3 140.0 " fill="none"></path>
+					<g data-name="Superchain">
+						<g fill="#eee8d5" stroke="#33322E" stroke-dasharray="6 6" data-name="Superchain">
+							<rect x="367.0" y="0.0" height="248.0" width="933.0" data-name="Superchain"></rect>
+							<path d="M367.0 32.0 L1300.0 32.0" fill="none" data-name="Superchain"></path>
+						</g>
+						<g transform="translate(367, 0)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Superchain" data-compartment="0">
+								<text x="458.5" y="14.1" stroke="none" text-anchor="middle" data-name="Superchain" data-compartment="0">Superchain</text>
+
+							</g>
+						</g>
+						<g transform="translate(367, 32)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain" data-compartment="1">
+							<g transform="translate(8, 8)" fill="#33322E" data-name="Superchain" data-compartment="1">
+								<g transform="translate(20, 20)" fill="#33322E" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Superchain" data-compartment="1">
+									<g stroke-dasharray="6 6" data-name="Superchain" data-compartment="1">
+										<path d="M262.2 80.0 L275.5 80 L288.8333333333333 80 L288.8 80.0 " fill="none" data-name="Superchain" data-compartment="1"></path>
+									</g>
+									<path d="M282.2 85.3 L288.8 80.0 L282.2 74.7 L295.5 80.0 Z" data-name="Superchain" data-compartment="1"></path>
+									<path d="M268.8 74.7 L262.2 80.0 L268.8 85.3 L255.5 80.0 Z" data-name="Superchain" data-compartment="1"></path>
+									<g stroke-dasharray="6 6" data-name="Superchain" data-compartment="1">
+										<path d="M588.2 80.0 L601.5 80 L614.8333333333334 80 L614.8 80.0 " fill="none" data-name="Superchain" data-compartment="1"></path>
+									</g>
+									<path d="M608.2 85.3 L614.8 80.0 L608.2 74.7 L621.5 80.0 Z" data-name="Superchain" data-compartment="1"></path>
+									<path d="M594.8 74.7 L588.2 80.0 L594.8 85.3 L581.5 80.0 Z" data-name="Superchain" data-compartment="1"></path>
+									<g data-name="Origin Chain">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Origin Chain">
+											<rect x="0.0" y="12.0" height="136.0" width="255.5" data-name="Origin Chain"></rect>
+											<path d="M0.0 44.0 L255.5 44.0" fill="none" data-name="Origin Chain"></path>
+										</g>
+										<g transform="translate(0, 12)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Origin Chain" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Origin Chain" data-compartment="0">
+												<text x="119.8" y="14.1" stroke="none" text-anchor="middle" data-name="Origin Chain" data-compartment="0">Origin Chain</text>
+
+											</g>
+										</g>
+										<g transform="translate(0, 44)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Origin Chain" data-compartment="1">
+											<g transform="translate(8, 8)" fill="#33322E" data-name="Origin Chain" data-compartment="1">
+												<g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Origin Chain" data-compartment="1">
+													<path d="M59.0 24.0 L79 24 L84.33333333333333 24 L84.3 24.0 " fill="none" data-name="Origin Chain" data-compartment="1"></path>
+													<path d="M84.3 16.0 L86.6 16.3 L88.7 17.3 L90.4 18.8 L91.6 20.7 L92.3 22.9 L92.3 25.1 L91.6 27.3 L90.4 29.2 L88.7 30.7 L86.6 31.7 L84.3 32.0" fill="none" data-name="Origin Chain" data-compartment="1"></path>
+													<path d="M92.3 24.0 L99.0 24.0" fill="none" data-name="Origin Chain" data-compartment="1"></path>
+													<ellipse cx="84.3" cy="24.0" rx="4.0" ry="4.0" data-name="Origin Chain" data-compartment="1"></ellipse>
+													<g data-name="Pools">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Pools">
+															<rect x="0.0" y="8.0" height="32.0" width="59.0" stroke="none" data-name="Pools"></rect>
+															<path d="M0.0 8.0 L0.0 40.0" fill="none" data-name="Pools"></path>
+															<path d="M59.0 8.0 L59.0 40.0" fill="none" data-name="Pools"></path>
+															<ellipse cx="29.5" cy="8.0" rx="29.5" ry="6.0" data-name="Pools"></ellipse>
+															<path d="M59.0 40.0 L59.0 40.3 L58.9 40.6 L58.7 40.9 L58.4 41.2 L58.1 41.5 L57.7 41.8 L57.2 42.1 L56.7 42.3 L56.1 42.6 L55.4 42.9 L54.7 43.1 L53.9 43.4 L53.0 43.6 L52.1 43.9 L51.1 44.1 L50.1 44.3 L49.0 44.5 L47.9 44.7 L46.7 44.9 L45.5 45.0 L44.2 45.2 L43.0 45.3 L41.6 45.5 L40.3 45.6 L38.9 45.7 L37.5 45.8 L36.1 45.8 L34.6 45.9 L33.2 46.0 L31.7 46.0 L30.2 46.0 L28.8 46.0 L27.3 46.0 L25.8 46.0 L24.4 45.9 L22.9 45.8 L21.5 45.8 L20.1 45.7 L18.7 45.6 L17.4 45.5 L16.0 45.3 L14.7 45.2 L13.5 45.0 L12.3 44.9 L11.1 44.7 L10.0 44.5 L8.9 44.3 L7.9 44.1 L6.9 43.9 L6.0 43.6 L5.1 43.4 L4.3 43.1 L3.6 42.9 L2.9 42.6 L2.3 42.3 L1.8 42.1 L1.3 41.8 L0.9 41.5 L0.6 41.2 L0.3 40.9 L0.1 40.6 L0.0 40.3 L0.0 40.0" data-name="Pools"></path>
+														</g>
+														<g transform="translate(0, 12)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Pools" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Pools" data-compartment="0">
+																<text x="21.5" y="14.1" stroke="none" text-anchor="middle" data-name="Pools" data-compartment="0">Pools</text>
+
+															</g>
+														</g>
+													</g>
+													<g data-name="Router">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Router">
+															<path d="M149.3 0.0 L199.5 24.0 L149.3 48.0 L99.0 24.0 Z" data-name="Router"></path>
+														</g>
+														<g transform="translate(115.75, 8)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Router" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Router" data-compartment="0">
+																<text x="25.5" y="14.1" stroke="none" text-anchor="middle" data-name="Router" data-compartment="0">Router</text>
+
+															</g>
+														</g>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+									<g data-name="Destination Chain">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Destination Chain">
+											<rect x="621.5" y="12.0" height="136.0" width="255.5" data-name="Destination Chain"></rect>
+											<path d="M621.5 44.0 L877.0 44.0" fill="none" data-name="Destination Chain"></path>
+										</g>
+										<g transform="translate(621.5, 12)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Destination Chain" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Destination Chain" data-compartment="0">
+												<text x="119.8" y="14.1" stroke="none" text-anchor="middle" data-name="Destination Chain" data-compartment="0">Destination Chain</text>
+
+											</g>
+										</g>
+										<g transform="translate(621.5, 44)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Destination Chain" data-compartment="1">
+											<g transform="translate(8, 8)" fill="#33322E" data-name="Destination Chain" data-compartment="1">
+												<g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Destination Chain" data-compartment="1">
+													<path d="M100.5 24.0 L120.5 24 L125.83333333333333 24 L125.8 24.0 " fill="none" data-name="Destination Chain" data-compartment="1"></path>
+													<path d="M125.8 16.0 L128.1 16.3 L130.2 17.3 L131.9 18.8 L133.1 20.7 L133.8 22.9 L133.8 25.1 L133.1 27.3 L131.9 29.2 L130.2 30.7 L128.1 31.7 L125.8 32.0" fill="none" data-name="Destination Chain" data-compartment="1"></path>
+													<path d="M133.8 24.0 L140.5 24.0" fill="none" data-name="Destination Chain" data-compartment="1"></path>
+													<ellipse cx="125.8" cy="24.0" rx="4.0" ry="4.0" data-name="Destination Chain" data-compartment="1"></ellipse>
+													<g data-name="Pools">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Pools">
+															<rect x="140.5" y="8.0" height="32.0" width="59.0" stroke="none" data-name="Pools"></rect>
+															<path d="M140.5 8.0 L140.5 40.0" fill="none" data-name="Pools"></path>
+															<path d="M199.5 8.0 L199.5 40.0" fill="none" data-name="Pools"></path>
+															<ellipse cx="170.0" cy="8.0" rx="29.5" ry="6.0" data-name="Pools"></ellipse>
+															<path d="M199.5 40.0 L199.5 40.3 L199.4 40.6 L199.2 40.9 L198.9 41.2 L198.6 41.5 L198.2 41.8 L197.7 42.1 L197.2 42.3 L196.6 42.6 L195.9 42.9 L195.2 43.1 L194.4 43.4 L193.5 43.6 L192.6 43.9 L191.6 44.1 L190.6 44.3 L189.5 44.5 L188.4 44.7 L187.2 44.9 L186.0 45.0 L184.7 45.2 L183.5 45.3 L182.1 45.5 L180.8 45.6 L179.4 45.7 L178.0 45.8 L176.6 45.8 L175.1 45.9 L173.7 46.0 L172.2 46.0 L170.7 46.0 L169.3 46.0 L167.8 46.0 L166.3 46.0 L164.9 45.9 L163.4 45.8 L162.0 45.8 L160.6 45.7 L159.2 45.6 L157.9 45.5 L156.5 45.3 L155.2 45.2 L154.0 45.0 L152.8 44.9 L151.6 44.7 L150.5 44.5 L149.4 44.3 L148.4 44.1 L147.4 43.9 L146.5 43.6 L145.6 43.4 L144.8 43.1 L144.1 42.9 L143.4 42.6 L142.8 42.3 L142.3 42.1 L141.8 41.8 L141.4 41.5 L141.1 41.2 L140.8 40.9 L140.6 40.6 L140.5 40.3 L140.5 40.0" data-name="Pools"></path>
+														</g>
+														<g transform="translate(140.5, 12)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Pools" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Pools" data-compartment="0">
+																<text x="21.5" y="14.1" stroke="none" text-anchor="middle" data-name="Pools" data-compartment="0">Pools</text>
+
+															</g>
+														</g>
+													</g>
+													<g data-name="Router">
+														<g fill="#eee8d5" stroke="#33322E" data-name="Router">
+															<path d="M50.3 0.0 L100.5 24.0 L50.3 48.0 L0.0 24.0 Z" data-name="Router"></path>
+														</g>
+														<g transform="translate(16.75, 8)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Router" data-compartment="0">
+															<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Router" data-compartment="0">
+																<text x="25.5" y="14.1" stroke="none" text-anchor="middle" data-name="Router" data-compartment="0">Router</text>
+
+															</g>
+														</g>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+									<g data-name="Interoperable Tokens">
+										<g fill="#fdf6e3" stroke="#33322E" data-name="Interoperable Tokens">
+											<rect x="295.5" y="0.0" height="160.0" width="286.0" data-name="Interoperable Tokens"></rect>
+											<path d="M295.5 32.0 L581.5 32.0" fill="none" data-name="Interoperable Tokens"></path>
+											<path d="M295.5 64.0 L581.5 64.0" fill="none" data-name="Interoperable Tokens"></path>
+											<path d="M295.5 96.0 L581.5 96.0" fill="none" data-name="Interoperable Tokens"></path>
+											<path d="M295.5 128.0 L581.5 128.0" fill="none" data-name="Interoperable Tokens"></path>
+										</g>
+										<g transform="translate(295.5, 0)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Interoperable Tokens" data-compartment="0">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Interoperable Tokens" data-compartment="0">
+												<text x="135.0" y="14.1" stroke="none" text-anchor="middle" data-name="Interoperable Tokens" data-compartment="0">Interoperable Tokens</text>
+
+											</g>
+										</g>
+										<g transform="translate(295.5, 32)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Interoperable Tokens" data-compartment="1">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Interoperable Tokens" data-compartment="1">
+												<text x="0.0" y="14.1" stroke="none" data-name="Interoperable Tokens" data-compartment="1">*XERC20 + SuperchainERC20 tokens</text>
+
+											</g>
+										</g>
+										<g transform="translate(295.5, 64)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Interoperable Tokens" data-compartment="2">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Interoperable Tokens" data-compartment="2">
+												<text x="0.0" y="14.1" stroke="none" data-name="Interoperable Tokens" data-compartment="2">*SuperchainERC20 tokens</text>
+
+											</g>
+										</g>
+										<g transform="translate(295.5, 96)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Interoperable Tokens" data-compartment="3">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Interoperable Tokens" data-compartment="3">
+												<text x="0.0" y="14.1" stroke="none" data-name="Interoperable Tokens" data-compartment="3">oUSDT</text>
+
+											</g>
+										</g>
+										<g transform="translate(295.5, 128)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Interoperable Tokens" data-compartment="4">
+											<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Interoperable Tokens" data-compartment="4">
+												<text x="0.0" y="14.1" stroke="none" data-name="Interoperable Tokens" data-compartment="4">VELO</text>
+
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g data-name="Hyperlane">
+						<g fill="#eee8d5" stroke="#33322E" data-name="Hyperlane">
+							<path d="M117.0 108.0 L210.0 108.0 L218.0 124.0 L210.0 140.0 L117.0 140.0 L125.0 124.0 Z" data-name="Hyperlane"></path>
+						</g>
+						<g transform="translate(125, 108)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Hyperlane" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Hyperlane" data-compartment="0">
+								<text x="0.0" y="14.1" stroke="none" data-name="Hyperlane" data-compartment="0">Hyperlane</text>
+
+							</g>
+						</g>
+					</g>
+					<g data-name="oUSDT">
+
+						<g transform="translate(258, 108)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="oUSDT" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="oUSDT" data-compartment="0">
+								<text x="26.5" y="14.1" stroke="none" text-anchor="middle" data-name="oUSDT" data-compartment="0">oUSDT</text>
+
+							</g>
+						</g>
+					</g>
+					<g data-name="EVM">
+						<g fill="#eee8d5" stroke="#33322E" data-name="EVM">
+							<circle r="4.0" cx="42.5" cy="60.0" data-name="EVM"></circle>
+							<path d="M42.5 64.0 L42.5 72.0" fill="none" data-name="EVM"></path>
+							<path d="M38.5 68.0 L46.5 68.0" fill="none" data-name="EVM"></path>
+							<path d="M38.5 76.0 L42.5 72.0 L46.5 76.0" fill="none" data-name="EVM"></path>
+						</g>
+						<g transform="translate(17, 72)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="EVM" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="EVM" data-compartment="0">
+								<text x="17.5" y="14.1" stroke="none" text-anchor="middle" data-name="EVM" data-compartment="0">EVM</text>
+
+							</g>
+						</g>
+					</g>
+					<g data-name="non-EVM">
+						<g fill="#eee8d5" stroke="#33322E" data-name="non-EVM">
+							<circle r="4.0" cx="42.5" cy="156.0" data-name="non-EVM"></circle>
+							<path d="M42.5 160.0 L42.5 168.0" fill="none" data-name="non-EVM"></path>
+							<path d="M38.5 164.0 L46.5 164.0" fill="none" data-name="non-EVM"></path>
+							<path d="M38.5 172.0 L42.5 168.0 L46.5 172.0" fill="none" data-name="non-EVM"></path>
+						</g>
+						<g transform="translate(0, 168)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="non-EVM" data-compartment="0">
+							<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="non-EVM" data-compartment="0">
+								<text x="34.5" y="14.1" stroke="none" text-anchor="middle" data-name="non-EVM" data-compartment="0">non-EVM</text>
+
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

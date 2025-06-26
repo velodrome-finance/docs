@@ -1,0 +1,197 @@
+import SVG from "react-inlinesvg";
+
+# Superswaps
+
+> Onchain swaps infrastructure as a public good, built on Superchain.
+
+## Introduction
+
+To understand the need for something like Superswaps, let’s take a look at the
+core dependencies and the constraints that allow exchanging tokens across
+multiple blockchain networks.
+
+### Native Liquidity
+
+Projects create tokens and need to pair these with some other tokens in order
+to price them. The liquidity pools are launched to provide the price for a
+token in real-time based on the exchange rate.
+
+Every blockchain has their own tokens and pools. And while the tokens can have
+a representation on other chains, creating pools on the native chain is the
+most common, easiest and cheapest way for projects to launch.
+
+Expanding the token beyond the native chain requires significant operational
+effort and costs:
+
+- Setting up the interoperability between the native and the bridged tokens
+  requires working with bridge providers and takes significant effort and
+  operations. Failure to do this properly leads to high security risks.
+- Bridged token pricing needs onchain oracle data or a new chain's liquidity
+  pool. These pools require a large amount of native tokens to be bridged and
+  paired with the new chain liquidity. This gets expensive as the paired
+  liquidity and incentives for these have high costs.
+
+### Decentralization
+
+Native tokens and liquidity pools are common to be both permissionless and
+decentralized. With the bridged liquidity, the infrastructure necessary to make
+the communication with the native chain requires centralization, e.g., bridge
+APIs and computing nodes.
+
+The permissioned nature of the bridges and the risk of vendor lock-in, along
+with the differences in the token format and the interoperability specs,
+increase the risk of liquidity fragmentation and make cross-chain liquidity
+operations difficult and risky.
+
+### Interoperability
+
+Projects that want a representation of their token on other chains have to
+
+- deploy a new token on the new network
+- connect the new token with the old token via a “bridge” and
+- find a way to provide the token price.
+
+The canonical blockchain "bridges" are considered the safest, but are also the
+slowest. As an alternative, independent bridge providers are used to provide
+the interoperability between the native and non-native tokens.
+
+Every bridge provider operates independently and has their own security
+requirements, supported networks and fees. Most of the bridge operators also
+require specific token formats that are not compatible with canonical bridges,
+also raising concerns around the risk of vendor lock-in.
+
+## Architecture
+
+<SVG src="svg/docs/superswaps.svg" className="w-full max-w-full h-auto mt-4" />
+
+With all the components and the constraints of building cross-chain liquidity,
+it’s easier to explain the core architectural decisions behind Superswaps.
+
+- Native liquidity focused: Superswaps are designed to support native chain and
+  project needs. Token creators need native exposure to their chain and
+  liquidity. Projects should be spending time building instead of maintaining
+  bridges and liquidity pools or adding security concerns.
+- Full permissionless decentralization: Superswaps should operate exclusively
+  onchain. There should be no need for tokenlists, APIs, order books or other
+  off chain services that can go down. Real-time permissionless execution is
+  the only way to scale along with faster block times and market movements.
+- Futureproof, fast and cheap interoperability: Superswaps should not require
+  vendor lock-in, allow native and non-native bridges and be compatible with
+  upcoming interoperability that’s cheaper, faster and trust-minimized.
+
+The first two requirements are embedded in the Velodrome core philosophy by
+building on top of the decentralized and immutable infrastructure of the
+protocol. Every new chain on Velodrome gets native immutable pools and the
+necessary onchain APIs for offchain needs.
+
+### Dual Interoperability
+
+The interoperability layer was the missing part that has been designed to
+implement the upcoming native Superchain interoperability specs along with the
+fully functional open source interoperability from Hyperlane.
+
+The message sending and receiving components both allow for swappable modules.
+The modularity of the message transportation allows for virtually any bridge
+provider to be supported. The preference for Hyperlane is thanks to no
+requirements for a specific token format and their chain-agnostic open source
+implementation.
+
+The Superchain module implements support for the upcoming native
+interoperability along with the Superchain ERC20 token format. These modules
+will be replacing the “classic” interoperability layer the moment native
+Superchain messaging goes live.
+
+The full specs on interoperability are available
+[on Github](https://github.com/velodrome-finance/superchain-contracts/blob/main/SPECIFICATION.md#features).
+
+To learn more about the Superchain, visit [specs.optimism.io/interop](https://specs.optimism.io/interop)
+
+### Interoperable Routers
+
+Routers are the entry point for token swaps. Routers communicate with the pools
+directly and provide an interface for developers to operate the tokens
+exchange.
+
+Superswaps extend the general functionality of the Universal Router released by
+Uniswap with additional commands that allow for cross-chain execution of router
+commands.
+
+The newly introduced commands that enable communication via messaging between
+the routers are
+
+- `BRIDGE_TOKEN`
+- `EXECUTE_CROSS_CHAIN`
+- `TRANSFER_FROM`
+
+The full router specs are available
+[on Github](https://github.com/velodrome-finance/universal-router/blob/main/SPECIFICATION.md#technical-architecture).
+
+### MEV Protection
+
+Routers operating on pure onchain messaging suggest there’s no built-in
+privacy. Since anybody can see swaps arriving from other routers / chains,
+these can be timed by other onchain players to their benefit (MEV).
+
+Developed together with Optimism and Hyperlane, Superswaps implement the
+support for privately relaying the swap commitments. The functionality is also
+known as [Submarine Sends](https://libsubmarine.org) and allows separating the
+information about what’s being swapped from the rest of the transaction.
+
+### Intermediary Stablecoin
+
+<SVG src="svg/docs/superpools.svg" className="w-full max-w-full h-auto mt-4" />
+
+Routers require an intermediary token to transfer the value from one chain to
+another. Superswaps are operating on the Open USDT stablecoin for the
+cross-chain value transfer.
+
+Open USDT operates on the same dual interoperability layer as the Superswaps.
+It implements the XERC20 + SuperchainERC20 token formats allowing the swaps to
+be initiated outside the Superchain from EVM and non-EVM users.
+
+To learn more about Open USDT, visit [openusdt.xyz](https://openusdt.xyz)
+
+### Real-time onchain API
+
+Three years ago, Velodrome introduced an onchain API. The concept replaced
+completely the need of running databases, indexers and generally offchain
+infrastructure. Superswaps leverage to the full extent the ability to fetch the
+data for quoting a swap in real-time.
+
+Sugar, the name of the onchain API, is the thin data layer that’s between the
+deployed smart contracts that encapsulate the complexity and the security, and
+the end user experience: whether that is the Velodrome website or a Superchain
+integration.
+
+[Sugar](https://github.com/velodrome-finance/sugar/) is deployed on every
+blockchain serviced by Velodrome and is providing Superswaps with the
+information about the available tokens and pools in real-time.
+
+Along with Sugar, two more onchain components are being used
+
+- [Spot price aggregator](https://github.com/velodrome-finance/spot-price-aggregator),
+  a project started by 1inch and used for fetching onchain token prices in
+  real-time based on the available pool oracles
+- [Mixed Quoter](https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol),
+  a modified implementation that comes from the Uniswap v3 release and allows
+  us to fetch quotes for finding the best swap route
+
+## SDKs
+
+Superswaps require only a regular RPC endpoint in order to set up an
+integration. This gives developers absolute freedom in where and how an
+integration is done: from user-facing wallets to onchain automations.
+
+Two open source and lightweight abstractions are available and were designed to
+help developers build integrations faster. These abstractions serve as SDKs and
+handle
+
+- Data fetching: tokens, pools, quotes
+- Routing: cyclical graph construction and shortest path computation
+- Router planning: construction and serialization of the commands for the swap
+  execution
+- Private relaying: encryption and submission of the swap commitment
+
+Python SDK is available [on Github](https://github.com/velodrome-finance/sugar-sdk).
+
+The TypeScript version will be announced soon.

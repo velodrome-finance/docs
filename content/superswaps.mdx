@@ -4,9 +4,9 @@ import SVG from "react-inlinesvg";
 
 > Onchain swaps infrastructure as a public good, built on Superchain.
 
-## Introduction
+## Introduction {#introduction}
 
-To understand the need for something like Superswaps, let’s take a look at the
+To understand the need for something like Superswaps, let's take a look at the
 core dependencies and the constraints that allow exchanging tokens across
 multiple blockchain networks.
 
@@ -48,7 +48,7 @@ operations difficult and risky.
 Projects that want a representation of their token on other chains have to
 
 - deploy a new token on the new network
-- connect the new token with the old token via a “bridge” and
+- connect the new token with the old token via a "bridge" and
 - find a way to provide the token price.
 
 The canonical blockchain "bridges" are considered the safest, but are also the
@@ -60,12 +60,12 @@ requirements, supported networks and fees. Most of the bridge operators also
 require specific token formats that are not compatible with canonical bridges,
 also raising concerns around the risk of vendor lock-in.
 
-## Architecture
+## Architecture {#architecture}
 
 <SVG src="svg/docs/superswaps.svg" className="w-full max-w-full h-auto mt-4" />
 
 With all the components and the constraints of building cross-chain liquidity,
-it’s easier to explain the core architectural decisions behind Superswaps.
+it's easier to explain the core architectural decisions behind Superswaps.
 
 - Native liquidity focused: Superswaps are designed to support native chain and
   project needs. Token creators need native exposure to their chain and
@@ -77,7 +77,7 @@ it’s easier to explain the core architectural decisions behind Superswaps.
   the only way to scale along with faster block times and market movements.
 - Futureproof, fast and cheap interoperability: Superswaps should not require
   vendor lock-in, allow native and non-native bridges and be compatible with
-  upcoming interoperability that’s cheaper, faster and trust-minimized.
+  upcoming interoperability that's cheaper, faster and trust-minimized.
 
 The first two requirements are embedded in the Velodrome core philosophy by
 building on top of the decentralized and immutable infrastructure of the
@@ -98,7 +98,7 @@ implementation.
 
 The Superchain module implements support for the upcoming native
 interoperability along with the Superchain ERC20 token format. These modules
-will be replacing the “classic” interoperability layer the moment native
+will be replacing the "classic" interoperability layer the moment native
 Superchain messaging goes live.
 
 The full specs on interoperability are available
@@ -128,14 +128,14 @@ The full router specs are available
 
 ### MEV Protection
 
-Routers operating on pure onchain messaging suggest there’s no built-in
+Routers operating on pure onchain messaging suggest there's no built-in
 privacy. Since anybody can see swaps arriving from other routers / chains,
 these can be timed by other onchain players to their benefit (MEV).
 
 Developed together with Optimism and Hyperlane, Superswaps implement the
 support for privately relaying the swap commitments. The functionality is also
 known as [Submarine Sends](https://libsubmarine.org) and allows separating the
-information about what’s being swapped from the rest of the transaction.
+information about what's being swapped from the rest of the transaction.
 
 ### Intermediary Stablecoin
 
@@ -158,7 +158,7 @@ completely the need of running databases, indexers and generally offchain
 infrastructure. Superswaps leverage to the full extent the ability to fetch the
 data for quoting a swap in real-time.
 
-Sugar, the name of the onchain API, is the thin data layer that’s between the
+Sugar, the name of the onchain API, is the thin data layer that's between the
 deployed smart contracts that encapsulate the complexity and the security, and
 the end user experience: whether that is the Velodrome website or a Superchain
 integration.
@@ -176,7 +176,7 @@ Along with Sugar, two more onchain components are being used
   a modified implementation that comes from the Uniswap v3 release and allows
   us to fetch quotes for finding the best swap route
 
-## SDKs
+## SDKs {#sdks}
 
 Superswaps require only a regular RPC endpoint in order to set up an
 integration. This gives developers absolute freedom in where and how an

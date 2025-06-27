@@ -4,7 +4,7 @@ import SVG from "react-inlinesvg";
 
 > Onchain swaps infrastructure as a public good, built on Superchain.
 
-## Introduction {#introduction}
+## Introduction <a id="introduction"></a>
 
 To understand the need for something like Superswaps, let's take a look at the
 core dependencies and the constraints that allow exchanging tokens across
@@ -60,9 +60,9 @@ requirements, supported networks and fees. Most of the bridge operators also
 require specific token formats that are not compatible with canonical bridges,
 also raising concerns around the risk of vendor lock-in.
 
-## Architecture {#architecture}
+## Architecture <a id="architecture"></a>
 
-<SVG src="svg/docs/superswaps.svg" className="w-full max-w-full h-auto mt-4" />
+<SVG src="/svg/docs/superswaps.svg" className="w-full max-w-full h-auto mt-4" />
 
 With all the components and the constraints of building cross-chain liquidity,
 it's easier to explain the core architectural decisions behind Superswaps.
@@ -139,7 +139,7 @@ information about what's being swapped from the rest of the transaction.
 
 ### Intermediary Stablecoin
 
-<SVG src="svg/docs/superpools.svg" className="w-full max-w-full h-auto mt-4" />
+<SVG src="/svg/docs/superpools.svg" className="w-full max-w-full h-auto mt-4" />
 
 Routers require an intermediary token to transfer the value from one chain to
 another. Superswaps are operating on the Open USDT stablecoin for the
@@ -176,7 +176,7 @@ Along with Sugar, two more onchain components are being used
   a modified implementation that comes from the Uniswap v3 release and allows
   us to fetch quotes for finding the best swap route
 
-## SDKs {#sdks}
+## SDKs <a id="sdks"></a>
 
 Superswaps require only a regular RPC endpoint in order to set up an
 integration. This gives developers absolute freedom in where and how an

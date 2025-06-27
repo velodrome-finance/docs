@@ -5,12 +5,13 @@ This guide applies to both, Aerodrome and Velodrome (Superchain).
 This document covers mainly the write functions, for accessing the data, please
 check Sugar:
 
-* https://github.com/velodrome-finance/sugar
-* https://github.com/velodrome-finance/sugar-sdk
+- https://github.com/velodrome-finance/sugar
+- https://github.com/velodrome-finance/sugar-sdk
 
 For the contract addresses, please check:
-* https://aerodrome.finance/security#contracts (for Aerodrome)
-* https://velodrome.finance/security#contracts (for Velodrome/Superchain)
+
+- https://aerodrome.finance/security#contracts (for Aerodrome)
+- https://velodrome.finance/security#contracts (for Velodrome/Superchain)
 
 ## Basic Pools
 
@@ -23,26 +24,31 @@ interface.
 
 To deposit into a pool, the allowance for the ERC20 tokens should be granted
 to the Router:
-* https://github.com/aerodrome-finance/contracts/blob/main/contracts/interfaces/IRouter.sol (for Aerodrome)
-* https://github.com/velodrome-finance/contracts/blob/main/contracts/interfaces/IRouter.sol (for Velodrome)
-* https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/IRouter.sol (for Superchain)
+
+- https://github.com/aerodrome-finance/contracts/blob/main/contracts/interfaces/IRouter.sol (for Aerodrome)
+- https://github.com/velodrome-finance/contracts/blob/main/contracts/interfaces/IRouter.sol (for Velodrome)
+- https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/IRouter.sol (for Superchain)
 
 If the pool does not exist, the amounts should follow the ratios of
-* 1:1 for stable pools
-* arbitrary for volatile pools
+
+- 1:1 for stable pools
+- arbitrary for volatile pools
 
 For existing pools, a call to the `quoteAddLiquidity()` will return the
 estimated amounts for a deposit.
 
 The `amountBDesired` value should be set to a large value, consider something
 like:
+
 ```
 parseUnits(Number.MAX_SAFE_INTEGER.toString(), tokenB.decimals)
 ```
+
 Using the
-* quoted amounts,
-* minimum amounts (where a slippage is applied),
-* and unix timestamp in the future for the deadline
+
+- quoted amounts,
+- minimum amounts (where a slippage is applied),
+- and unix timestamp in the future for the deadline
 
 To deposit, call `addLiquidity()` or `addLiquidityETH()` if depositing native
 tokens.
@@ -53,9 +59,9 @@ The call will return ERC20 tokens representing the LP tokens.
 
 To claim the fees, call the Pool contract function `claimFees()`:
 
-* https://github.com/aerodrome-finance/contracts/blob/main/contracts/interfaces/IPool.sol (for Aerodrome)
-* https://github.com/velodrome-finance/contracts/blob/main/contracts/interfaces/IPool.sol (for Velodrome)
-* https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/pools/IPool.sol (for Superchain)
+- https://github.com/aerodrome-finance/contracts/blob/main/contracts/interfaces/IPool.sol (for Aerodrome)
+- https://github.com/velodrome-finance/contracts/blob/main/contracts/interfaces/IPool.sol (for Velodrome)
+- https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/pools/IPool.sol (for Superchain)
 
 ### Staking / Unstaking
 
@@ -67,13 +73,15 @@ fees!
 
 To stake LP tokens, the allowance for these tokens should be granted to the
 pool Gauge contract:
-* https://github.com/aerodrome-finance/contracts/blob/main/contracts/gauges/interfaces/IGauge.sol (for Aerodrome)
-* https://github.com/velodrome-finance/contracts/blob/main/contracts/gauges/interfaces/IGauge.sol (for Velodrome)
-* https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/gauges/ILeafGauge.sol (for Superchain)
+
+- https://github.com/aerodrome-finance/contracts/blob/main/contracts/gauges/interfaces/IGauge.sol (for Aerodrome)
+- https://github.com/velodrome-finance/contracts/blob/main/contracts/gauges/interfaces/IGauge.sol (for Velodrome)
+- https://github.com/velodrome-finance/superchain-contracts/blob/main/src/interfaces/gauges/ILeafGauge.sol (for Superchain)
 
 Calling
-* `deposit()` with the LP tokens amount will stake the liquidity
-* `withdraw()` with the LP tokens amount will unstake the liquidity
+
+- `deposit()` with the LP tokens amount will stake the liquidity
+- `withdraw()` with the LP tokens amount will unstake the liquidity
 
 ### Emissions Claiming
 
@@ -90,9 +98,10 @@ The concentrated pools are mostly compatible with the Uniswap V3 interface.
 
 To deposit into a pool, the allowance for the ERC20 tokens should be granted
 to the NonfungiblePositionManager contract:
-* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/interfaces/INonfungiblePositionManager.sol
-* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/interfaces/INonfungiblePositionManager.sol
-* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/periphery/NonfungiblePositionManager.sol
+
+- https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/interfaces/INonfungiblePositionManager.sol
+- https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/interfaces/INonfungiblePositionManager.sol
+- https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/periphery/NonfungiblePositionManager.sol
 
 If the pool does not exist, an initial `sqrtPriceX96` (pool price) will have to
 be provided.
@@ -100,17 +109,18 @@ be provided.
 To get a quote, call the SugarHelper contract functions `estimateAmount0()` or
 `estimateAmount1()` with the token amount and the initial pool price. If the
 pool exists, the pool current price will be used instead:
-* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/SugarHelper.sol#L49-L109 (for Aerodrome)
-* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/SugarHelper.sol#L49-L109 (for Velodrome)
-* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/sugar/SlipstreamSugar.sol#L49-L109 (for Superchain)
 
+- https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/SugarHelper.sol#L49-L109 (for Aerodrome)
+- https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/SugarHelper.sol#L49-L109 (for Velodrome)
+- https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/sugar/SlipstreamSugar.sol#L49-L109 (for Superchain)
 
 To deposit, using the
-* quoted amounts,
-* minimum amounts (where a slippage is applied),
-* pool tick spacing,
-* low/high tick values,
-* and unix timestamp in the future for the deadline
+
+- quoted amounts,
+- minimum amounts (where a slippage is applied),
+- pool tick spacing,
+- low/high tick values,
+- and unix timestamp in the future for the deadline
 
 Call the `mint()` function on the NonfungiblePositionManager contract (pass
 `sqrtPriceX96 = 0` if the pool exists, non-zero value will try to create the
@@ -122,17 +132,19 @@ every deposit.
 ### Fees Claiming
 
 To claim the fees, call the CLPool contract function `collect()`:
-* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L67-L87 (for Aerodrome)
-* https://github.com/velodrome-finance/slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L67-L87 (for Velodrome)
-* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L43-L61 (for Superchain)
+
+- https://github.com/aerodrome-finance/slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L67-L87 (for Aerodrome)
+- https://github.com/velodrome-finance/slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L67-L87 (for Velodrome)
+- https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/core/interfaces/pool/ICLPoolActions.sol#L43-L61 (for Superchain)
 
 ### Staking / Unstaking
 
 To stake a concentrated liquidity deposit, the allowance for the ERC721 token
 should be granted to the pool CLGauge contract (if available):
-* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/gauge/interfaces/ICLGauge.sol (for Aerodrome)
-* https://github.com/velodrome-finance/slipstream/blob/main/contracts/gauge/interfaces/ICLGauge.sol (for Velodrome)
-* https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/gauge/interfaces/ILeafCLGauge.sol (for Superchain)
+
+- https://github.com/aerodrome-finance/slipstream/blob/main/contracts/gauge/interfaces/ICLGauge.sol (for Aerodrome)
+- https://github.com/velodrome-finance/slipstream/blob/main/contracts/gauge/interfaces/ICLGauge.sol (for Velodrome)
+- https://github.com/velodrome-finance/superchain-slipstream/blob/main/contracts/gauge/interfaces/ILeafCLGauge.sol (for Superchain)
 
 To stake the ERC721, call the CLGauge `deposit()` function with the NFT id.
 Call the `withdrawn()` function to unstake.
@@ -145,9 +157,10 @@ To claim emissions for a staked deposit, call the Gauge contract function
 ### Burning
 
 The concentrated pool deposit NFT can be burned if:
-* all the liquidity has been withdrawn
-* all the fees were claimed
-* all the emissions (if any were claimed)
+
+- all the liquidity has been withdrawn
+- all the fees were claimed
+- all the emissions (if any were claimed)
 
 To burn the ERC721 token, call the NonfungiblePositionManager `burn()`
 function. This call can also be bundled into a native `multicall()` function
@@ -155,7 +168,7 @@ call along with a `collect()` call.
 
 ## Pricing tokens
 
-To get token prices in ETH, call [getManyRatesToEthWithCustomConnectors](https://github.com/velodrome-finance/spot-price-aggregator/blob/ed3321144324da0b07ddf1fe9b2effcb56c54663/contracts/OffchainOracle.sol#L359). Rates are returned multiplied by ETH decimals + the difference in decimals to ETH. You will need to normalize these using something along these lines (example code in python): 
+To get token prices in ETH, call [getManyRatesToEthWithCustomConnectors](https://github.com/velodrome-finance/spot-price-aggregator/blob/ed3321144324da0b07ddf1fe9b2effcb56c54663/contracts/OffchainOracle.sol#L359). Rates are returned multiplied by ETH decimals + the difference in decimals to ETH. You will need to normalize these using something along these lines (example code in python):
 
 ```python
 # where r is the rate you get back from getManyRatesToEthWithCustomConnectors
@@ -178,6 +191,7 @@ _TBD_
 ### Rewards Claiming
 
 ## Incentives
+
 _TBD_
 
 ## Swaps
@@ -186,22 +200,23 @@ To swap `amount` of `tokenA` to `expectedAmount` of `tokenB`, you need to get a 
 
 - `path` which describes one or multiple hops between `tokenA` and `tokenB`
 - `amount` of `tokenA`
-- `expectedAmount` of `tokenB` 
+- `expectedAmount` of `tokenB`
 - `priceImpact` of the swap
 
 Typically you will want to find a quote maximizing `expectedAmount` of `tokenB`. Here's how sugar-sdk clients approach this:
 
 - use sugar's `forSwaps` function to get a list of pools (`NB: unlike **all** function this returns a more compact liquidity pool structure`)
-- filter returned pools to either include one of the tokens included in the swap or one of the connector tokens (configured on a per chain basis) 
+- filter returned pools to either include one of the tokens included in the swap or one of the connector tokens (configured on a per chain basis)
 - construct a graph of tokens using pools as edges
 - find all paths from `tokenA` to `tokenB` in the graph (consider this graph `undirected` with `parallel edges`[^1] we suggest max path depth to 3 elements)
 - discard paths containing potentially unsafe tokens[^2] if needed
 - for each path, invoke `quoteExactInput` function (details below)
-- discard 0 quotes and pick a quote with maximum `expectedAmount` value 
+- discard 0 quotes and pick a quote with maximum `expectedAmount` value
 
 To get a quote, call `quoteExactInput` function from `MixedRouteQuoterV1`:
-* https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Aerodrome)
-* https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Velodrome)
+
+- https://github.com/aerodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Aerodrome)
+- https://github.com/velodrome-finance/slipstream/blob/main/contracts/periphery/lens/MixedRouteQuoterV1.sol (for Velodrome)
 
 `quoteExactInput` takes 2 arguments `amountIn` and `path`. Here's how to construct a `path`:
 
@@ -212,10 +227,12 @@ To get a quote, call `quoteExactInput` function from `MixedRouteQuoterV1`:
 - concatenate these triplets into a list and produce another list mapping its values to types `address` for addresses and `int24` for fillers
 - run encode packed function on the 2 lists to produce encoded packed data (see [example using viem](https://www.viem.sh/docs/abi/encodePacked) and [example using eth abi](https://eth-abi.readthedocs.io/en/stable/encoding.html))
 
-Once you have a quote that looks good, decide on the `slippage` (in %) that sounds acceptable and provide this as input to `execute` function of the swap contract. 
+Once you have a quote that looks good, decide on the `slippage` (in %) that sounds acceptable and provide this as input to `execute` function of the swap contract.
 
 > More information on the swap interface coming soon
- 
+
 [^1]: There can be multiple pools for the same pair of tokens, hence the need to support parallel edges in the graph
+
 [^2]: Tokens might have a transfer tax or other fee, which means they need special handling on the swap router, higher slippage setting
+
 [^3]: For cases when a path component uses a reversed version of the pool (this may happen since search graph is `undirected`), make sure to use tokens following their logical order in the swap chain VS `token0`/`token1` ordering of the pool

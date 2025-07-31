@@ -1,5 +1,3 @@
-import { Table } from "flowbite-react";
-
 # Tokenomics
 
 Velodrome Finance uses two tokens to manage its utility and governance:
@@ -33,40 +31,42 @@ The initial distribution of `$VELO` and `$veVELO` was done for users and
 protocols likeliest to contribute to protocol mission to become the liquidity
 base layer of the Optimism ecosystem.
 
-<Table striped>
-  <Table.Head>
-    <Table.HeadCell className="w-3/4">VELO</Table.HeadCell>
-    <Table.HeadCell></Table.HeadCell>
-    <Table.HeadCell></Table.HeadCell>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell>Community</Table.Cell>
-      <Table.Cell>240M</Table.Cell>
-      <Table.Cell>60%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Partner Protocols</Table.Cell>
-      <Table.Cell>96M</Table.Cell>
-      <Table.Cell>24%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Velodrome Foundation</Table.Cell>
-      <Table.Cell>40M</Table.Cell>
-      <Table.Cell>10%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Optimism</Table.Cell>
-      <Table.Cell>20M</Table.Cell>
-      <Table.Cell>5%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Genesis Liquidity Pool</Table.Cell>
-      <Table.Cell>4M</Table.Cell>
-      <Table.Cell>1%</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
+{
+<table className="min-w-full w-full divide-y divide-accent-10 rounded-xl overflow-hidden bg-accent-0">
+  <thead>
+    <tr>
+      <th colSpan={3} className="w-3/4 px-6 py-4 text-left font-medium uppercase">VELO</th>
+    </tr>
+  </thead>
+  <tbody className="divide-y divide-accent-10">
+    <tr className="bg-accent-5">
+      <td className="px-6 py-4">Community</td>
+      <td className="px-6 py-4 text-right">240M</td>
+      <td className="px-6 py-4 text-right">60%</td>
+    </tr>
+    <tr>
+      <td className="px-6 py-4">Partner Protocols</td>
+      <td className="px-6 py-4 text-right">96M</td>
+      <td className="px-6 py-4 text-right">24%</td>
+    </tr>
+    <tr className="bg-accent-5">
+      <td className="px-6 py-4">Velodrome Foundation</td>
+      <td className="px-6 py-4 text-right">40M</td>
+      <td className="px-6 py-4 text-right">10%</td>
+    </tr>
+    <tr>
+      <td className="px-6 py-4">Optimism</td>
+      <td className="px-6 py-4 text-right">20M</td>
+      <td className="px-6 py-4 text-right">5%</td>
+    </tr>
+    <tr className="bg-accent-5">
+      <td className="px-6 py-4">Genesis Liquidity Pool</td>
+      <td className="px-6 py-4 text-right">4M</td>
+      <td className="px-6 py-4 text-right">1%</td>
+    </tr>
+  </tbody>
+</table>
+}
 
 ### Community
 
